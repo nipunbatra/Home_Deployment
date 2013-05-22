@@ -70,7 +70,8 @@ def smart_meter_data():
 		return "Smart Meter data was seen %d seconds ago"%(difference_time)
 	else:
 		return ""
-			
+		
+log_file=open('/home/muc/Desktop/Deployment/alerts/logs.txt','a')	
 while True:
 	
 	#Testing for jPlugs
@@ -88,8 +89,11 @@ while True:
 	#print "Checking for data from Smart Meter"
 	overall_alerts+=smart_meter_data()
 	#print overall_alerts
-	send_mail(overall_alerts)
-	#print "-----------------------------------------"
+	try:
+		send_mail(overall_alerts)
+	except Exception,e:
+		log_file.write(str(time.time())+" "+e+"\n")
+			#print "-----------------------------------------"
 	time.sleep(900)
 	
 		
