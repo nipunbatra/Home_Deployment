@@ -1,9 +1,13 @@
 21 May 2013
-
+1. Router seems to have gone crazy. Not giving proper names to different hardware.
+Added as an issue currently.
 
 
 
 
 22 May 2013
 -----------
-1. It was observed that monitoring process (which sends emails) was getting killed. The reason behind the same is that internt was down and that exception was not handled.
+1. It was observed that monitoring process (which sends emails) was getting killed.
+The reason behind the same is that internet was down and that exception was not handled.
+This makes a stronger case of also using SMS based notifications and alerts in order
+to be independent of frquent internet losses.
