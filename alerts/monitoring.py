@@ -71,7 +71,7 @@ def smart_meter_data():
 	else:
 		return ""
 		
-log_file=open('/home/muc/Desktop/Deployment/alerts/logs.txt','a')	
+log_file=open('/home/muc/Desktop/Deployment/alerts/sendmail.log','a')	
 while True:
 	
 	#Testing for jPlugs
