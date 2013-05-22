@@ -10,4 +10,4 @@ Added as an issue currently.
 1. It was observed that monitoring process (which sends emails) was getting killed.
 The reason behind the same is that internet was down and that exception was not handled.
 This makes a stronger case of also using SMS based notifications and alerts in order
-to be independent of frquent internet losses.
+to be independent of frequent internet losses. Also, exception handling was added.
