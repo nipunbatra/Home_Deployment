@@ -1,8 +1,13 @@
 21 May 2013
+-----------
 1. Router seems to have gone crazy. Not giving proper names to different hardware.
-Added as an issue currently.
-
-
+-Added as an issue currently.
+2. Tested from hostel room if data is getting collected on the server. Unfortunately, 
+for both smart meter and jPlug there was no data since a long time. RPi which was 
+attached to the Smart Meter had lose Power, whereas jPlug is unresolved. 
+-Need to buy Belkin extension cables asap.
++Providing SSH access was helpful in finding which system is working,
+else coming to the lab and testing might have resulted in more data loss
 
 
 22 May 2013
