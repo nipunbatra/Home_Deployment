@@ -4,7 +4,7 @@ from email.MIMEBase import MIMEBase
 from email.MIMEText import MIMEText
 from email import Encoders
 import os
-from password import username,password
+from password import gmail_username,gmail_password
 gmail_user =gmail_username
 gmail_pwd = gmail_password
 
