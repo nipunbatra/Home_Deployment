@@ -4,9 +4,9 @@ from email.MIMEBase import MIMEBase
 from email.MIMEText import MIMEText
 from email import Encoders
 import os
-
-gmail_user = "smartroom.iiit@gmail.com"
-gmail_pwd = "thereisnopassword"
+from passwword import username,password
+gmail_user = username
+gmail_pwd = password
 
 def mail(to, subject, text):
    msg = MIMEMultipart()
