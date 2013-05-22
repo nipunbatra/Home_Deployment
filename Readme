@@ -1,0 +1,8 @@
+This deployment covers the following:
+1. Overall elcticity meter level data
+2. Appliance level data using jPlug
+3. Water meter data
+4. CT data
+5. Data from Android
+6. Alerts- SMS, Email
+
