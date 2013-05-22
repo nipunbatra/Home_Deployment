@@ -1,2 +1,3 @@
 password.py
 *.pyc
+*.log
