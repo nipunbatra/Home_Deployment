@@ -1,0 +1,5 @@
+This folder contains script to send alerts to notify about the data collection processes. 
+Currently it sends an email to the specified user. The mail is sent on the following conditions:
+1. No heartbeat connection to different Raspberry Pi's
+2. No data received from jPlug for last 15 mins
+3. No data received from Smart Meter for last 30 mins
