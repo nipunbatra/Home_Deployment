@@ -1,0 +1,72 @@
+<html
+<head>
+
+<script src="../static/javascripts/jquery-1.6.4.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+			jQuery(document).ready(function() {
+
+				jQuery("#information").hide();
+				jQuery.ajaxSetup({
+					async : false
+				});
+			
+				jQuery("#view_data").click(function() {
+
+					var jplug_id;
+					jplug_id=jQuery("#jplug").val();
+					var obj={};				
+					
+					obj["jplug_id"]=jplug_id;
+					var receivedData={};
+					var temp="http://"+document.location.hostname+":"+document.location.port+"/";
+					jQuery.post(temp+"query", JSON.stringify(obj), function(data) {
+						
+							receivedData = data["data"];
+						
+
+						});
+					
+					var splitted_lines=receivedData.split("_");
+					var html_output="";
+					for (var i=0,len=splitted_lines.length; i<len; i++){
+ 						html_output=html_output+splitted_lines[i]+"<br>"
+					}
+					jQuery("#information").html(html_output);
+					jQuery("#information").show();
+
+				});
+
+			});
+			
+
+</script>
+</head>
+
+<body>
+	<title>jPlug Console</title>
+
+     <h1>JPlug Console</h1> 
+	<label>JPlug</label>
+	<select id=jplug>
+  		<option value="001EC00CC49C">001EC00CC49C</option>
+  		<option value="001EC00CC49F">001EC00CC49F</option>
+ 	 	<option value="001EC00CC4A1">001EC00CC4A1</option>
+ 		<option value="001EC00D7A18">001EC00D7A18</option>
+  		<option value="001EC00CC49D">001EC00CC49D</option>
+  		<option value="001EC00CC4A0">001EC00CC4A0</option>
+  		<option value="001EC00CC4AD">001EC00CC4AD</option>
+  		<option value="001EC00D7A1D">001EC00D7A1D</option>
+
+
+
+
+	</select>
+	<button id="view_data">View</button>
+
+
+	<div id="hello"></div>
+	 <p id="information"></p>
+</body>
+
+</html>
