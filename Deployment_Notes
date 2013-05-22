@@ -1,0 +1,9 @@
+21 May 2013
+
+
+
+
+
+22 May 2013
+-----------
+1. It was observed that monitoring process (which sends emails) was getting killed. The reason behind the same is that internt was down and that exception was not handled.
