@@ -1,8 +1,7 @@
 #!/bin/sh -e
 #
-# Date of EDIT: 22 May 2013 , Edited by Nipun
 # rc.local
-#
+#Last Modified 22 May 10:42 AM Nipun
 # This script is executed at the end of each multiuser runlevel.
 # Make sure that the script will "exit 0" on success or any other
 # value on error.
@@ -32,4 +31,7 @@ python /home/muc/Desktop/Deployment/sys_log_scripts/sys_log_server.py 9009 > /ho
 
 cd /home/muc/Desktop/Deployment/alerts
 python /home/muc/Desktop/Deployment/alerts/monitoring.py > /home/muc/Desktop/Deployment/alerts/log &
+
+cd /home/muc/Desktop/Deployment/smart_meter_field_upload
+python /home/muc/Desktop/Deployment/smart_meter_file_upload/smart_meter_db.py > /home/muc/Desktop/Deployment/smart_meter_file_upload/beta & 
 exit 0
