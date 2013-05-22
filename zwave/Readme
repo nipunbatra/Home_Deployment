@@ -1,0 +1,3 @@
+This folder contains script to:
+1. Collect data from Zwave based Plug Computer
+2. Periodically upload it to DB

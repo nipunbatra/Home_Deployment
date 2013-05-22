@@ -1,0 +1,2 @@
+This folder contains script to collect data from jPlug. The file data.php must be placed
+in /var/www and must have write permissions to write in that folder.
