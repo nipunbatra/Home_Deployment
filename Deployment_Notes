@@ -73,3 +73,7 @@ to download all the s/w required to run the ZWave stuff.
 to call them and ask them if they can deliver asap.
 8. Yet Another issue (enhancement). Filename started with 0 for smart meter data collection.
 Since all the data had been cleaned. Should not cause any problems, but should be avoided.
+
+10 AM
+9. We felt jPlug could be giving issues due to MAC binding. This was something we had not
+done in the lab. Removed the MAC binding. Still on power reset jPlug won't work.
