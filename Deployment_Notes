@@ -77,3 +77,7 @@ Since all the data had been cleaned. Should not cause any problems, but should b
 10 AM
 9. We felt jPlug could be giving issues due to MAC binding. This was something we had not
 done in the lab. Removed the MAC binding. Still on power reset jPlug won't work.
+
+11 AM
+10. This time tried configuring only the n/w settings of jPlug. And then see if it would
+work after reset. Again no success. 
