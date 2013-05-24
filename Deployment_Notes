@@ -23,3 +23,51 @@ to be independent of frequent internet losses. Also, exception handling was adde
 Today i took all the stuff home. It is actually a lot of stuff. As of 22:19 the following has
 been configured:
 
+1. Router: 3 routers have been bridged. The main router is connected to the modem. As such, internet
+is pathetic. Need to work on GSM based notifications asap else if we wait for internet to be up,
+lot of data loss might occur. Another solution is to ensure that local mail servers are used.
+The details of how to setup routers will be added in How To section. Also had removed AP capabilities
+of ADSL modem
+2. Desktop (Main server): A lot of cables to moved, but still the easiest part of the puzzle. Reserved 
+an IP for it in the address table.
+3. Smart Meter and RPi: Most of the stuff had already been done before. Just replaced the
+older system with the newer one and everything just worked.
+4. Phones: Charged them all very quickly using Belkin DC powered USB (Idea courtesy Manoj). 
+On some phones the time was way different from the current time. Need to look into this, since
+i think time will go out of sync mutiple time. Has been added as an issue for the repo.
+5. jPlug: Once, Twice and .. don't know how many times did i set them up in the day. They 
+would keep on dying every now and then.
+6. Water Meter: The plumber came and we found that the tank has a thicker pipe, so we 
+would need a newer meter. Last time, shipping took a lot of time, so efforts (trip
+to Chawri)  would be needed to ensure that timely deployment. Plumber would do the
+fitting on Saturday morning.
+7. Zwave based stuff. Could not get it to work. Since internet was pathetic, could not
+download some required packages. 
+8. Testing PIR on RPi: Could not get sufficient time to do it today, goes in TODO for
+tomorrow.
+
+24 May 2013
+----------
+7 AM
+1. Internet continues to be pathetic. Hardly any time when it works. MTNL!
+2. All jPlug were dead when i woke up. Thought for some time and felt that maybe i tried
+to optimize the server side PHP script and forgot that jPlug will work ONLY the way it does!
+Put everything in adhoc mode and set everything up again. Now jPlugs didn't die of their own.
+Next, i tested if they would work after electricity failure, so just turned off the power
+and turned it back on. IT DOES NOT WORK. Another few hours of effort wasted. Clueless!
+Next step i am taking is to try and disable MAC binding for a particular jPlug and see if
+it works.
+3. Smart Meter and Raspberry Pi worked throughout. They survived a power failure and have
+reported all the data so far without any hiccup.
+
+9 AM
+4. Smart meter data collection was stopped. Log says: Input/ Output Error [5]. Absence of a 
+traceback hurts now! Don't know exactly what caused the issue. Also i need to add a script in 
+every RPi etc. to ensure that all it's scripts for data collection, uploading are working.
+If not, explicitly start them. Adding this as a high priority issue. 
+5. All jPlugs dead now. Accidentally turned off power. Would call Radio Labs to figure out
+what is going on.
+6. Plug Computer does not have the required s/w. With "blazing" fast internet, may take years 
+to download all the s/w required to run the ZWave stuff.
+7. Found contact details of the vendor for Water Meter. Factory in Faridabad. Can give it a try
+to call them and ask them if they can deliver asap.
