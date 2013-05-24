@@ -5,3 +5,5 @@ and when everything is working fine, it shows the instantaneous power
 so manually
 4. Different amperage plugs should be made available
 5. Communication should not be so tighly bound as it is currently. 
+6. Should be an option to store the data locally in a SD card
+7. Should have provision to send data directly to IoT services like COSM, SensorAct
