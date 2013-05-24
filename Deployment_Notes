@@ -81,3 +81,12 @@ done in the lab. Removed the MAC binding. Still on power reset jPlug won't work.
 11 AM
 10. This time tried configuring only the n/w settings of jPlug. And then see if it would
 work after reset. Again no success. 
+
+12:25 PM
+11. Even electrician is amazed! Nothing works. Motor fitting when removed direct on/off to
+socket type resets the jPlug. Don't know what's the fault- jPlug or connection. Also experienced
+last night when i plugged in my latop charger in running jPlug and it also reset. Then, i felt 
+i did something wrong. But, now i am not sure if jPlug handles this case.
+12. No scope of inverter points. That would really mess up the entire home, which i think clearly is 
+not needed. Battery backup for RPi working for collecting Water data seems like a plausible solution.
+ 
