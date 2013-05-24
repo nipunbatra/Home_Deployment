@@ -71,3 +71,5 @@ what is going on.
 to download all the s/w required to run the ZWave stuff.
 7. Found contact details of the vendor for Water Meter. Factory in Faridabad. Can give it a try
 to call them and ask them if they can deliver asap.
+8. Yet Another issue (enhancement). Filename started with 0 for smart meter data collection.
+Since all the data had been cleaned. Should not cause any problems, but should be avoided.
