@@ -107,3 +107,6 @@ proper pulse.
 4. Range is not an issue for Zwave stuff. Tested even with closing the door.
 Currently the power cable to Zwave devices is broken. Need to solder rather 
 than weakly taping.
+5. Placed 5 Multisensors at different locations in home. Put a doc showing
+mapping between room and node id. ZWave stuff working fine for now. Need
+to write sripts to upload data to main server.
