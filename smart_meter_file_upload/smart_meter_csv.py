@@ -14,7 +14,8 @@ units={}
 units["W"]="Watts"
 units["VLN"]="Volts"
 units["A"]="Amps"
-
+s = json.load( open("../bmh_matplotlibrc.json") )
+matplotlib.rcParams.update(s)
 TIMEZONE='Asia/Kolkata'
 
 urls = ('/upload', 'Upload',
