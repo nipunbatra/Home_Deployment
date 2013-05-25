@@ -100,3 +100,10 @@ which can just attach to the pipe without the need to breaking anything.
 with the way we set up bridging. But alas, doesn't work even with it after 
 turning off. 3 LED's blink which according to their documentation means that
 IP is not being assigned. 
+
+4 PM
+3. One water meter installed. Tested in the noon at low pressure. Was giving 
+proper pulse.
+4. Range is not an issue for Zwave stuff. Tested even with closing the door.
+Currently the power cable to Zwave devices is broken. Need to solder rather 
+than weakly taping.
