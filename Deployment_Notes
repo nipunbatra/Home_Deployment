@@ -110,3 +110,5 @@ than weakly taping.
 5. Placed 5 Multisensors at different locations in home. Put a doc showing
 mapping between room and node id. ZWave stuff working fine for now. Need
 to write sripts to upload data to main server.
+6. Started data collection on phones also. Also turned on bluetooth for
+the 3 occupants rooms.
