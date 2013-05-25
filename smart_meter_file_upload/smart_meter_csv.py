@@ -19,8 +19,8 @@ matplotlib.rcParams.update(s)
 TIMEZONE='Asia/Kolkata'
 
 urls = ('/upload', 'Upload',
-		'/query','query',
-		'/','home')
+	'/query','query',
+	'/','home')
 filedir="/home/muc/Desktop/temp/"
 render = web.template.render('templates')
 db = web.database(dbn='mysql', db='smart_meter', user='root', pw='password')
@@ -37,37 +37,27 @@ class home:
 
 class Upload:
    def POST(self):
-	
-        x = web.input(myfile={})
-        
-        
+	x = web.input(myfile={})        
         if 'myfile' in x: # to check if the file-object is created
 			filepath=x.myfile.filename.replace('\\','/') # replaces the windows-style slashes with linux ones.
 			filename=filepath.split('/')[-1] # splits the and chooses the last part (the filename with extension)
 			folder=x['folder']
-			path=filedir+folder+"/"
-			
-			
+			path=filedir+folder+"/"					
 			if not os.path.exists(path):
 				os.makedirs(path)
 			fout = open(path+ filename,'w') # creates the file where the uploaded file should be stored
 			fout.write(x.myfile.file.read()) # writes the uploaded file to the newly created file.
 			fout.close() # closes the file, upload complete.
-			
-			
-class query:
-	
+						
+class query:	
 	def POST(self):
 		data = web.data()
 		query_data=json.loads(data)
 		start_time=query_data["start_time"]
 		end_time=query_data["end_time"]
-		
 		parameter=query_data["parameter"]
 		query="SELECT "+parameter+",timestamp FROM smart_meter_data WHERE timestamp BETWEEN "+str(start_time)+" AND "+str(end_time)
-		
 		retrieved_data=list(db.query(query))
-		
 		LEN=len(retrieved_data)
 		x=[0]*LEN
 		y=[0]*LEN
@@ -75,10 +65,8 @@ class query:
 		for i in range(0,LEN):
 			x[i]=retrieved_data[i]["timestamp"]
 			y[i]=retrieved_data[i][parameter]
-			
 			X[i]=datetime.datetime.fromtimestamp(x[i],pytz.timezone(TIMEZONE))
-			
-		#print retrieved_data["timestamp"]
+			#print retrieved_data["timestamp"]
 		with lock:
 			figure = plt.gcf() # get current figure
 			plt.axes().relim()
@@ -91,14 +79,9 @@ class query:
 			filename=randomword(12)+".jpg"
 			plt.savefig("/home/muc/Desktop/Deployment/smart_meter_file_upload/static/images/"+filename, bbox_inches=0,dpi=100)
 			plt.close()
-			
 			web.header('Content-Type', 'application/json')
 			return json.dumps({"filename":filename})
-			
-		
-		
-
-        
+	        
 if __name__ == "__main__":
    app = web.application(urls, globals()) 
    app.run()
