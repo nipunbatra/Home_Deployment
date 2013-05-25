@@ -1,0 +1,14 @@
+To reduce interfence, we configure Plug Computer not to broadcast it's SSID.
+This can be done by configuring it in Wi-Fi client mode. This can be done by 
+the following procedure:
+
+1. Run /root/setup/init_wlan
+This should give an output like the following
+Stopping very small Busybox based DHCP server: Stopped /usr/sbin/udhcpd (pid 1322).
+udhcpd.
+Stopping DNS forwarder and DHCP server: dnsmasq.
+Starting DNS forwarder and DHCP server: dnsmasq.
+
+2. Now we would add this to startup process so that it does not on bootup
+come up in AP mode
+Change the last line in /root/setup/run_setup to init_wlan from init_uap
