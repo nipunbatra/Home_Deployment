@@ -90,3 +90,13 @@ i did something wrong. But, now i am not sure if jPlug handles this case.
 12. No scope of inverter points. That would really mess up the entire home, which i think clearly is 
 not needed. Battery backup for RPi working for collecting Water data seems like a plausible solution.
  
+25 May 2013
+-----------
+
+11 AM
+1. Water meter fitting going on. A lot of scope for non intrusive sensors, 
+which can just attach to the pipe without the need to breaking anything.
+2. Tried setting up jPlug with MTNL AP. Thought maybe something we did wrong
+with the way we set up bridging. But alas, doesn't work even with it after 
+turning off. 3 LED's blink which according to their documentation means that
+IP is not being assigned. 
