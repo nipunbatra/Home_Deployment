@@ -161,3 +161,6 @@ connected. Anyone has ideas why this may happen?
 tests, i recall that CC shows about 10-15 W less than jPlug. How critical is this 
 calibration. Moreover, the 433 MHz communication works across 2 floors, so that is
 some good news. CC sends readings every 6 s. But only the real power.
+8. Observing false positives from Water Meter. Hard to say where the fault lies.
+The s/w looks for a rising edge followed by a falling edge. New issue created 
+to this effect containing more information about the same.
