@@ -25,14 +25,16 @@
 					var parameter,start_time,end_time;
 
 					parameter=jQuery("#parameter").val();
+					node_id=jQuery("#node_id").val();
 					start_time=datetimeToEpoch(jQuery("#start_date_time").val());
 					end_time=datetimeToEpoch(jQuery("#end_date_time").val());
 
 					var obj={};
-					obj["start_time"]=start_time;
-					obj["end_time"]=end_time;
+					obj["start_time"]=start_time-19800;
+					obj["end_time"]=end_time-19800;
 					obj["parameter"]=parameter;
-					
+					obj["node_id"]=node_id;
+					alert(JSON.stringify(obj));
 					var receivedData={};
 					var temp="http://"+document.location.hostname+":"+document.location.port+"/";
 					jQuery.post(temp+"query", JSON.stringify(obj), function(data) {
@@ -61,10 +63,19 @@
 	<br/>
 	<label>Parameter</label>
 	<select id=parameter>
-  		<option value="lighting">lighting</option>
-  		<option value="temperature">temperature</option>
+  		<option value="light">light</option>
+  		<option value="temp">temp</option>
+  		<option value="pir">pir</option>
  	 	
  		 
+	</select>
+	<select id= node_id>
+	<option value=2>2</option>
+	<option value=3>3</option>
+	<option value=4>4</option>
+	<option value=5>5</option>
+	<option value=6>6</option>
+	<option value=7>7</option>
 	</select>
 	<br/>
 	<label>Start Time </label> <input type="text" id="start_date_time" name="start_date_time" readonly='true' />

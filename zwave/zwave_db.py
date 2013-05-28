@@ -4,6 +4,7 @@ import MySQLdb,sys
 import time,glob
 THRESHOLD_TIME=5
 SLEEP_TIME=900
+import logging
 urls = ('/upload', 'Upload')
 filedir="/home/muc/Desktop/temp2/"
 connection = MySQLdb.Connect(host='', user='root', passwd='password', db='zwave',local_infile = 1)

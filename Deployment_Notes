@@ -112,3 +112,52 @@ mapping between room and node id. ZWave stuff working fine for now. Need
 to write sripts to upload data to main server.
 6. Started data collection on phones also. Also turned on bluetooth for
 the 3 occupants rooms.
+ 
+26 May 2013
+------------
+
+1. Woke up and saw that some of the phones ran out of juice overnight! Pretty bad,
+need to perpetually charge them. Also need to create a mapping of phone to location.
+2. ZWave stuff was still working. But probably error in upload script cost data loss.
+Looking into it.
+3. RasPi was not on n/w. Data collection was still working. Just removed ethernet cable
+and put it back. It was again back on attached devices page.
+
+27 May 2013
+------------
+
+1. Got the second water meter installed. Gives a pulse every 10 l. Tested with RPi
+and were able to detect the pulse. Cabling and installing in ~45 degrees without cover
+is tough! Moreover, had to drill through window to bring the data cable down.
+SADLY there is a decrease in water pressure from tank
+2. Similarly tested with RPi for the water meter connected with motor. Works fine.
+3. Motor remains an issue and can't use it with jPlug. Got a phase loop out. Would
+test with Current Cost to see if it works. Had tested it in lab earlier. Should work.
+4. For jPlug Deepak told that maybe putting new MPFS image might work. Tried the same
+without success.
+5. Bought multiplugs for charging phones
+6. Put CT's in ground panel. For some reason didn't work. Manoj felt maybe we got more
+current than expected
+7. Overall an extremely tiring day. Output fairly limited
+Walkie Talkie might be useful in such deployments :-)
+
+28 May 2013
+------------
+
+1. Electricity again tripped in the night. I turned off my AC. Eventually woke up 
+at 2:30
+2. Saw the data from Multisensor. Feel that something is wrong. It is maybe wrongly
+detecting presence
+3. The long CAT 5 cable prepared seems a little short. Would put it for now.
+Put the Water tank RPi on LAN and ran the currently adhoc program to display rising/
+falling edges.
+4. Internet woes continue. The risk of getting a new fitting is that whatever works
+might stop!
+5. Reduced joins coming to Electric Meter, should reduce the noise
+6. Again got the same error in Electric Meter script. Checked the logs.
+At exactly the same point dmesg logs show that ttyUSB0 disconnected and ttyUSB1 
+connected. Anyone has ideas why this may happen?
+7. Tested motor consumption with Current Cost. It consumes ~685W. From previous 
+tests, i recall that CC shows about 10-15 W less than jPlug. How critical is this 
+calibration. Moreover, the 433 MHz communication works across 2 floors, so that is
+some good news. CC sends readings every 6 s. But only the real power.
