@@ -1,3 +1,5 @@
+![alt text](https://dl.dropboxusercontent.com/u/75845627/Deployment/Deployment_Home_1.jpg,"Deployment in Home I")
+
 This deployment covers the following:
 1. Overall elcticity meter level data
 2. Appliance level data using jPlug

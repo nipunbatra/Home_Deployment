@@ -98,7 +98,10 @@ class query:
 			plt.axes().autoscale_view(True,True,True)
 			figure.autofmt_xdate()
 			#plt.ylim((60,110))
-			plt.plot(X,y,'bo-')
+			if parameter=="pir":
+				plt.plot(X,y,'b_',markersize=10.0)
+			else:
+				plt.plot(X,y,'g.-')
 			filename=randomword(12)+".jpg"
 			plt.savefig("/home/muc/Desktop/Deployment/zwave/static/images/"+filename, bbox_inches=0,dpi=100)
 			plt.close()
