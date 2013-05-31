@@ -1,6 +1,7 @@
 ![alt text](https://dl.dropboxusercontent.com/u/75845627/Deployment/Deployment_Home_1.jpg "Deployment in Home I")
 
 This deployment covers the following:
+
 1. Overall elcticity meter level data
 2. Appliance level data using jPlug
 3. Water meter data
@@ -9,6 +10,7 @@ This deployment covers the following:
 6. Alerts- SMS, Email
 
 The following is the port assignment to different services
+
 80 - Data from JPlug is written using PhP script to files in /var/www
 9000- To manually go and check the last 10 readings of individual JPlugs
 9001- Data from smart meter is upload (CSV's) and can be visualized
