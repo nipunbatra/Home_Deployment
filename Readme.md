@@ -9,6 +9,9 @@ This deployment covers the following:
 5. Data from Android
 6. Alerts- SMS, Email
 
+For each of these you may find more details in the respective Readme files
+in corresponding folders.
+
 The following is the port assignment to different services
 
 * 80 - Data from JPlug is written using PhP script to files in /var/www
