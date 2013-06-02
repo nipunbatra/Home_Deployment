@@ -30,11 +30,10 @@
 					end_time=datetimeToEpoch(jQuery("#end_date_time").val());
 
 					var obj={};
-					obj["start_time"]=start_time-19800;
-					obj["end_time"]=end_time-19800;
+					obj["start_time"]=start_time;
+					obj["end_time"]=end_time;
 					obj["parameter"]=parameter;
 					obj["node_id"]=node_id;
-					alert(JSON.stringify(obj));
 					var receivedData={};
 					var temp="http://"+document.location.hostname+":"+document.location.port+"/";
 					jQuery.post(temp+"query", JSON.stringify(obj), function(data) {

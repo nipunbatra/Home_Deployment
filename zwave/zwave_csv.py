@@ -82,7 +82,7 @@ class query:
 		y=[0]*LEN
 		X=[None]*LEN
 		for i in range(0,LEN):
-			x[i]=retrieved_data[i]["timestamp"]+19800
+			x[i]=retrieved_data[i]["timestamp"]
 			
 			if parameter!="pir":
 				y[i]=retrieved_data[i][parameter]

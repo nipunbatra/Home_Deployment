@@ -164,3 +164,11 @@ some good news. CC sends readings every 6 s. But only the real power.
 8. Observing false positives from Water Meter. Hard to say where the fault lies.
 The s/w looks for a rising edge followed by a falling edge. New issue created 
 to this effect containing more information about the same.
+
+29-31 May
+---------
+
+1. Current Cost now send data directly to the server
+2. jPlugs reprogrammed and thicker wires put for heavier loads. Put up a mapping
+of jPlug ID to Appliance Name in configuration folder
+3. 
