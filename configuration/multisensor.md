@@ -1,5 +1,5 @@
 ID | Location
-_________________________________________
+---|----------------------------------_
 1  | Controller- First Floor Small Room
 2  | First Floor Big Room
 3  | Second Floor

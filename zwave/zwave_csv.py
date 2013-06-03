@@ -85,6 +85,8 @@ class query:
 			x[i]=retrieved_data[i]["timestamp"]
 			
 			if parameter!="pir":
+				
+
 				y[i]=retrieved_data[i][parameter]
 			else:
 				y[i]=1
@@ -99,8 +101,9 @@ class query:
 			figure.autofmt_xdate()
 			#plt.ylim((60,110))
 			if parameter=="pir":
-				plt.plot(X,y,'b_',markersize=10.0)
+				plt.plot(X,y,'b.')
 			else:
+				
 				plt.plot(X,y,'g.-')
 			filename=randomword(12)+".jpg"
 			plt.savefig("/home/muc/Desktop/Deployment/zwave/static/images/"+filename, bbox_inches=0,dpi=100)
