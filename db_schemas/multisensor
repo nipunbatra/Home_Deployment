@@ -1,4 +1,0 @@
-create table light_temp (timestamp INT, node_id INT, light INT, temp INT, primary key (timestamp, node_id));
-
-create table pir (timestamp INT, node_id INT ,primary key (timestamp, node_id));
-
