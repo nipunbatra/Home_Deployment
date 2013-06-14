@@ -83,6 +83,7 @@ CT 3
 Big MCB's
 
 Left MCB
+
 |Appliance|Floor|Type|Room|
 |---------|-----|----|----|
 |AC|First|Plug|Big room|
@@ -90,6 +91,7 @@ Left MCB
 |Geyser|First|Plug|Bathroom|
 
 Right MCB
+
 |Appliance|Floor|Type|Room|
 |---------|-----|----|----|
 |Geyser|Second|Plug|Bathroom|
