@@ -1,5 +1,6 @@
 21 May 2013
------------
+---
+
 1. Router seems to have gone crazy. Not giving proper names to different hardware.
 -Added as an issue currently.
 2. Tested from hostel room if data is getting collected on the server. Unfortunately, 
@@ -11,7 +12,8 @@ else coming to the lab and testing might have resulted in more data loss
 
 
 22 May 2013
------------
+---
+
 1. It was observed that monitoring process (which sends emails) was getting killed.
 The reason behind the same is that internet was down and that exception was not handled.
 This makes a stronger case of also using SMS based notifications and alerts in order
@@ -19,7 +21,8 @@ to be independent of frequent internet losses. Also, exception handling was adde
 
 
 23 May 2013
------------
+---
+
 Today i took all the stuff home. It is actually a lot of stuff. As of 22:19 the following has
 been configured:
 
@@ -47,7 +50,8 @@ download some required packages.
 tomorrow.
 
 24 May 2013
-----------
+---
+
 7 AM
 1. Internet continues to be pathetic. Hardly any time when it works. MTNL!
 2. All jPlug were dead when i woke up. Thought for some time and felt that maybe i tried
@@ -91,7 +95,7 @@ i did something wrong. But, now i am not sure if jPlug handles this case.
 not needed. Battery backup for RPi working for collecting Water data seems like a plausible solution.
  
 25 May 2013
------------
+---
 
 11 AM
 1. Water meter fitting going on. A lot of scope for non intrusive sensors, 
@@ -114,7 +118,7 @@ to write sripts to upload data to main server.
 the 3 occupants rooms.
  
 26 May 2013
-------------
+---
 
 1. Woke up and saw that some of the phones ran out of juice overnight! Pretty bad,
 need to perpetually charge them. Also need to create a mapping of phone to location.
@@ -124,7 +128,7 @@ Looking into it.
 and put it back. It was again back on attached devices page.
 
 27 May 2013
-------------
+---
 
 1. Got the second water meter installed. Gives a pulse every 10 l. Tested with RPi
 and were able to detect the pulse. Cabling and installing in ~45 degrees without cover
@@ -142,7 +146,7 @@ current than expected
 Walkie Talkie might be useful in such deployments :-)
 
 28 May 2013
-------------
+---
 
 1. Electricity again tripped in the night. I turned off my AC. Eventually woke up 
 at 2:30
@@ -166,7 +170,7 @@ The s/w looks for a rising edge followed by a falling edge. New issue created
 to this effect containing more information about the same.
 
 29-31 May
----------
+---
 
 1. Current Cost now send data directly to the server
 2. jPlugs reprogrammed and thicker wires put for heavier loads. Put up a mapping
@@ -175,7 +179,7 @@ of jPlug ID to Appliance Name in configuration folder
 
 
 15 June
---------
+---
 
 1. A post after 15 days! Its been so many days yet not fully stabilized
 2. Water meter seems to be stable
