@@ -172,3 +172,20 @@ to this effect containing more information about the same.
 2. jPlugs reprogrammed and thicker wires put for heavier loads. Put up a mapping
 of jPlug ID to Appliance Name in configuration folder
 3. 
+
+
+15 June
+--------
+
+1. A post after 15 days! Its been so many days yet not fully stabilized
+2. Water meter seems to be stable
+3. Electricity meter is stable
+4. Phone data collection was stopped on some phones
+5. Zwave data looks good, will need a lot of post processing, but cant do more
+with current sensors
+6. Didnt look into CT data today, need to look it today
+7. Took an image of "glowing" setup in night (with/without) flash.
+Confirms findings in Hitchiker..., LED's can be troublesome for 
+occupant, in this case I suffer!
+8. Current cost is working
+9. Water meter data from motor NOT working. Script stopped, will look into early tomorrow morning
