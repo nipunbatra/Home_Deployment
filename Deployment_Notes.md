@@ -193,3 +193,11 @@ Confirms findings in Hitchiker..., LED's can be troublesome for
 occupant, in this case I suffer!
 8. Current cost is working
 9. Water meter data from motor NOT working. Script stopped, will look into early tomorrow morning
+
+16 June
+***
+
+1. Hardly any electricity throughout
+2. Took some snaps of the deployment
+3. Multisensor didn't get power, maid probably snapped the wire
+
