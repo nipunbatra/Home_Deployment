@@ -9,6 +9,6 @@
 | zebra stripes | are neat      |    $1 |
 
 
-|Time    |Appliance_floor|Appliance_type|Appliance_room|
-| ------ |---------------|--------------|--------------|
+|Time    |Floor|Type|Room|ID|
+| ------ |---------------|--------------|--------------|--|
 
