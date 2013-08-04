@@ -8,6 +8,6 @@
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
 
-|Time    |Appliance floor|Appliance type|Appliance room|Appliance id in type and floor|Event        |
+|Time    |Appliance_floor|Appliance_type|Appliance_room|Appliance_id_in_type_and_floor|Event        |
 |--------|---------------|--------------|--------------|------------ -----------------|-------------|
 |12:17 PM|1              |Light         |Big           |1                             |Turned ON    |
