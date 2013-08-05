@@ -1,0 +1,37 @@
+#!/bin/sh -e
+#
+# rc.local
+#Last Modified 22 May 10:42 AM Nipun
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+#Starting JPlug Process Daemon
+cd  /home/muc/Desktop/Deployment/jplug_status/
+python /home/muc/Desktop/Deployment/jplug_status/jplug_status.py 9000 > /home/muc/Desktop/Deployment/jplug_status/jplug_run.log &
+
+#Starting Smart Meter  
+cd /home/muc/Desktop/Deployment/smart_meter_file_upload/
+python /home/muc/Desktop/Deployment/smart_meter_file_upload/smart_meter_csv.py 9001 > /home/muc/Desktop/Deployment/smart_meter_file_upload/smart_meter_run.log &
+
+#Starting Zwave listen daemon
+cd /home/muc/Desktop/Deployment/zwave/
+python /home/muc/Desktop/Deployment/zwave/zwave_csv.py 9004 > /home/muc/Desktop/Deployment/zwave/zwave_upload.log &
+
+#Starting Zwave Dump to DB
+python /home/muc/Desktop/Deployment/zwave/zwave_db.py > /home/muc/Desktop/Deployment/zwave/zwave_db.log &
+
+cd /home/muc/Desktop/Deployment/sys_log_scripts
+python /home/muc/Desktop/Deployment/sys_log_scripts/sys_log_server.py 9009 > /home/muc/Desktop/Deployment/sys_log_scripts/data.log &
+
+cd /home/muc/Desktop/Deployment/alerts
+python /home/muc/Desktop/Deployment/alerts/monitoring.py > /home/muc/Desktop/Deployment/alerts/alerts.log &
+
+cd /home/muc/Desktop/Deployment/smart_meter_field_upload
+python /home/muc/Desktop/Deployment/smart_meter_file_upload/smart_meter_db.py > /home/muc/Desktop/Deployment/smart_meter_file_upload/db_upload.log & 
+exit 0

@@ -1,0 +1,137 @@
+
+label
+{
+	width: 150px; 
+  float:left;
+  clear:left;
+}
+
+
+input.error {
+	border: 3px solid #f00;
+}
+
+div.errorDiv
+{
+	background: #000230;
+	color: #fff;
+	padding:20px;
+}
+input
+{
+	width :120px;
+}
+
+
+div#newSensor
+{
+	background: rgb(70,136,71);
+	color: rgb(223,240,216);
+	padding:20px;
+	-moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    border: 2px solid;
+}
+/*changed padding for this underlying div*/
+div.sensorDiv
+{
+	background: rgb(245,245,245);
+	color: rgb(0,0,0);
+	
+	
+	
+	padding:10px 20px;/*edited this*/
+	
+	-moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    /*border: 2px solid;*/
+}
+
+
+/*added these 3 and 1 below*/
+.space
+{
+	padding : 8px 0px 0px 0px;
+	margin:0px;
+	
+}
+.sensorDivPara
+{
+	padding : 0px;
+	margin : 0px;	
+}
+.actuatorDivPara
+{
+	padding : 10px 0px 0px 0px;
+	margin :0px;
+	}
+
+
+div.sensorDiv tr
+{
+	text-align: center;
+}
+/*changed padding for this underlying div*/
+div#newActuator
+{
+	background: rgb(51,51,70);
+	color: rgb(32,0,0);
+	
+	padding:0px 20px 10px 20px;
+	
+	-moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    border: 2px solid;
+    color : #FFFFFF;
+}
+div#newActuatorsDiv
+{
+	
+	padding:5px;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+   /*commented this  border: 2px solid;*/
+}
+.border
+{
+	border: 2px solid;
+}
+
+/*created a different border class*/
+/*para class also created under div.sensorDiv*/
+
+div#newSensor
+{
+	background: rgb(70,136,71);
+	color: rgb(223,240,216);
+	padding:20px;
+	-moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    border: 2px solid;
+}
+div.oldSensor
+{
+	background: rgb(70,136,71);
+	color: rgb(223,240,216);
+	padding:20px;
+	-moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    border: 2px solid;
+}
+div#oldActuator
+{
+	background: rgb(70,136,71);
+	color: rgb(223,240,216);
+	padding:20px;
+	-moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    border: 2px solid;
+}
+
