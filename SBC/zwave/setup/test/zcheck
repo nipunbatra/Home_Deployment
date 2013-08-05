@@ -1,0 +1,26 @@
+#!/bin/bash
+
+z_hw=`lsusb | grep PL2303 | awk {'print $1'}`
+
+if [ -z $z_hw ]; then
+echo Zwave-API ver: not installed
+echo Zwave-home id: not installed
+exit
+else
+
+z_api=`/root/setup/test/zwave api_version |grep packet|cut -f2 -d":"`
+z_id=`/root/setup/test/zwave home_id |grep packet|cut -f2 -d":"|awk {'print $3 $4 $5 $6'}`
+
+array=($z_api)
+len=${#array[*]}
+
+i=0
+while [ $i -lt $len ]; do
+ascii[$i]=`/usr/bin/ascii 0x${array[$i]} |grep prints |awk {'print $14'}| cut -c2`
+let i++
+done
+
+echo Zwave-API ver:${ascii[9]}${ascii[10]}${ascii[11]}${ascii[12]}
+echo Zwave-home id:$z_id
+exit
+fi

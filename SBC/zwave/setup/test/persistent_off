@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# File: persistent_off
+# Descripton: Disable persistent net rules generator; for testing purposes
+#
+# Copyright (C) 2010-2011, IONICS-EMS Inc.
+
+cd /lib/udev/rules.d/
+confirm=`ls | grep 75-persistent-net-generator.rules`
+
+if [ -z $confirm ]; then
+echo "udev persistent net rules already disabled!"
+else
+echo "udev persistent net rules disabled"
+mv /lib/udev/rules.d/75-persistent-net-generator.rules /lib/udev/rules.d/disabled
+fi

@@ -1,0 +1,47 @@
+#!/bin/sh
+#
+# File: init_cpuinfo
+# Descripton: Displays plug identiication into /proc/cpuinfo
+#
+# Copyright (C) 2010-2011, IONICS-EMS Inc.
+
+cat > /etc/fw_env.config << EOF
+/dev/mtd0 0x60000 0x20000 0x20000
+EOF
+
+serial=`fw_printenv ionicsplug_serial | cut -d "=" -f 2`
+part=`fw_printenv ionicsplug_part | cut -d "=" -f 2`
+mac=`fw_printenv ethaddr | cut -d "=" -f 2`
+model=`/usr/sbin/fw_printenv ionicsplug_model | cut -d "=" -f 2`
+board=`fw_printenv ionicsplug_board | cut -d "=" -f 2`
+firmware=`fw_printenv ionicsplug_firmware | cut -d "=" -f 2`
+z_api=`/root/setup/test/zcheck | grep API | cut -d ":" -f 2`
+z_id=`/root/setup/test/zcheck | grep home | cut -d ":" -f 2`
+
+cat > /root/setup/cpuinfo << EOF
+Processor       : Feroceon 88FR131 rev 1 (v5l)                                  
+BogoMIPS        : 1192.75                                                       
+Features        : swp half thumb fastmult edsp                                  
+CPU implementer : 0x56                                                          
+CPU architecture: 5TE                                                           
+CPU variant     : 0x2                                                           
+CPU part        : 0x131                                                         
+CPU revision    : 1                                                             
+
+Hardware        : PlugComputer
+Manufacturer    : IONICS-EMS Inc.
+Serial          : $serial
+Part            : $part
+MAC             : $mac
+Model           : $model                            
+Revision        : $board
+Firmware        : $firmware
+Zwave API ver.  : $z_api
+Zwave home ID   : $z_id
+EOF
+
+check=`mount | grep cpuinfo | awk {'print $1'}`
+if [ -z $check ]; then
+/bin/mount --bind /root/setup/cpuinfo /proc/cpuinfo
+fi
+rm /etc/fw_env.config

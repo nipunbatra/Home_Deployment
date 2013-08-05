@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# File: init_bt
+# Descripton: Initializes bluetooth 
+#
+# Copyright (C) 2010-2011, IONICS-EMS Inc.
+
+btcheck=`lsmod |grep btmrvl_sdio -m 1 |awk {'print $1'}`
+if [ -z $btcheck ]; then
+cp /root/setup/fw/bt/* /lib/firmware/mrvl/
+insmod /root/setup/modules/bt/btmrvl.ko
+insmod /root/setup/modules/bt/btmrvl_sdio.ko
+
+hciconfig hci0 up
+hciconfig hci0 piscan
+else
+echo "Warning: bluetooth already available"
+fi

@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# File: gpioconfig
+# Descripton: Initializes MPP controlled components
+#
+# Copyright (C) 2010-2011, IONICS-EMS Inc.
+
+
+# Output
+MPP=( 21 32 48 )
+
+len=${#MPP[*]}
+i=0
+while [ $i -lt $len ]; do
+echo ${MPP[$i]} >/sys/class/gpio/export
+echo out >/sys/class/gpio/gpio${MPP[$i]}/direction
+echo 0 >/sys/class/gpio/gpio${MPP[$i]}/value
+let i++
+done
+echo 1 >/sys/class/gpio/gpio48/value
+
+
+# Input
+MPP=( 23 37 38 )
+
+len=${#MPP[*]}
+i=0
+while [ $i -lt $len ]; do
+echo ${MPP[$i]} >/sys/class/gpio/export
+echo in >/sys/class/gpio/gpio${MPP[$i]}/direction
+let i++
+done
+
+# LED
+echo "default-on" > /sys/class/leds/led4/trigger

@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# File: run_setup
+# Descripton: Runs the specified scripts on boot-up; called on /etc/rc.local
+#
+# Copyright (C) 2010-2011, IONICS-EMS Inc.
+
+/root/setup/init_cpuinfo
+/root/setup/gpioconfig
+/root/setup/init_wlan

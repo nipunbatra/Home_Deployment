@@ -1,0 +1,157 @@
+#!/usr/bin/perl
+# 
+# Description: Checks installed Zwave firmware 
+
+use Device::SerialPort;
+my $port = "/dev/ttyUSB0";
+
+my $serial_port = Device::SerialPort->new ($port,1);
+die "Can't open serial port $port: $^E\n" unless ($serial_port);
+
+$serial_port->error_msg(1);
+$serial_port->user_msg(0);
+$serial_port->databits(8);
+$serial_port->baudrate(115200);
+$serial_port->parity("none");
+$serial_port->stopbits(1);
+$serial_port->dtr_active(1);
+$serial_port->handshake("none");
+$serial_port->write_settings || die "Could not set up port\n";
+
+
+my $cmd = shift;
+
+my $expect_answer = 0;
+
+if( $cmd eq "api_version" ) {
+   $seq = get_api_version();
+}
+elsif( $cmd eq "home_id" ) {
+   $seq = get_home_id();
+}
+else {
+   $serial_port->close();
+   exit(1);
+}
+
+transmit( $seq ) if( $seq );
+receive(1) if ( $expect_answer );
+
+$serial_port->close();
+
+
+####################################################################
+
+sub receive {
+    my( $timeout ) = @_;
+
+    my $end = time+$timeout;
+    $stopreceive = 0;
+    do {
+	receive_once();
+    } while( ($end > time) && ! $stopreceive );
+}
+
+## @fn receive_once()
+# read pending bytes from the serial port, ack if they look like a packet
+# 
+# @return true if we got an ack, false otherwise
+#
+sub receive_once {
+    my $gotack = 0;
+    $serial_port->read_const_time(200);       # 500 milliseconds = 0.5 seconds my $input = "";   
+    $input = "";
+    while( 1 ) {
+	my( $count, $bytes ) = $serial_port->read(1);
+	$input .= $bytes;
+	last unless( $count );
+    }
+    my @bytes = unpack( "C*", $input );
+    for( my $i=0; $i<@bytes; $i++ ) {
+	my $byte = $bytes[$i];
+	if( $byte == 6 ) {
+	    print "got ack\n" if( $dl > 2 );
+	    $gotack++;
+	}
+	elsif( $byte == 1 ) {
+	    my $len = $bytes[$i+1];
+	    $i+=2;
+	    my @packet = ();
+	    for( ; $len>1; $len--, $i++ ) {
+		push( @packet, $bytes[$i] );
+	    }
+	    $i++;
+	    handle_packet( \@packet );
+	    print " ... writing ack\n" if( $dl > 2 );
+	    $serial_port->write(pack("C",6));
+	}
+    }
+    return $gotack;
+}
+
+
+## @cmethod transmit( $data )
+# transmit one packet
+#
+sub transmit {
+    my( $seq ) = @_;
+
+    my $retries = 4; 
+    while( $retries-- && $seq ) { 
+	my $len = length( $seq );
+	print "sending: ";
+	for( my $i=2; $i<$len-1; $i++ ) {
+	    print sprintf( "%X ", unpack( "C", substr( $seq, $i, 1 ) ) );
+	}
+	print "\n";
+	$serial_port->write( $seq );
+	last if( receive_once() );
+    }
+}
+
+sub mkreqpacket {
+    my( @bytes ) = @_;
+
+    my $len = @bytes + 1;
+    unshift( @bytes, $len );
+    unshift( @bytes, 0x1 );
+    my $cr = 0xff;
+    for( my $i=1; $i<=$len; $i++ ) {
+	$cr ^= $bytes[$i];
+    }
+    push( @bytes, $cr );
+    return @bytes;
+}
+
+
+sub packpack {
+    my( @bytes ) = @_;
+
+    my $seq = "";
+    foreach my $byte (@bytes) {
+	$seq .= pack( "C", $byte );
+    }
+    return $seq;
+}
+
+sub handle_packet {
+    my( $pkg ) = @_;
+
+    print "got packet: ";
+    foreach my $byte (@$pkg) {
+	print sprintf( "%X ", $byte );
+    }
+    print "\n";
+}
+
+
+
+# Commands
+sub get_api_version {
+   return( packpack( mkreqpacket( 0, 0x15, 0x01 ) ) );
+}
+
+sub get_home_id {
+   return( packpack( mkreqpacket( 0, 0x20, 0x01 ) ) );
+}
+

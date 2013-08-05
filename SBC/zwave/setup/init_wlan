@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# File: init_wlan
+# Descripton: Initializes the wireless client mode (mlan0)
+#
+# Copyright (C) 2010-2011, IONICS-EMS Inc.
+
+
+check=`ifconfig -a | grep mlan0 | awk {'print $1'}`
+
+if [ -z $check ]; then
+
+/etc/init.d/udhcpd stop
+/etc/init.d/dnsmasq stop
+
+echo 2 >/proc/uap/uap0/hwstatus
+ifconfig uap0 down
+
+rmmod uap8xxx
+cp /root/setup/fw/wlan/* /lib/firmware/mrvl/
+insmod /root/setup/modules/wlan/mcypt.ko
+insmod /root/setup/modules/wlan/sd8688.ko
+ifconfig mlan0 up
+rm -f /lib/firmware/mrvl/sd8688.bin
+
+/etc/init.d/dnsmasq start
+
+else
+echo "Warning: mlan0 already available!"
+
+fi

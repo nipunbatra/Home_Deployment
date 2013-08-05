@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# File: shutdown
+# Descripton: Shutdowns the plugcomputer for safe removal of unit.
+#
+# Copyright (C) 2010-2011, IONICS-EMS Inc.
+
+cat > /etc/fw_env.config << EOF
+/dev/mtd0 0x60000 0x20000 0x20000
+EOF
+
+fw_setenv bootcmd 'run ubi_bootcmd ; init_ionics mode shutdown'
+rm /etc/fw_env.config
+reboot

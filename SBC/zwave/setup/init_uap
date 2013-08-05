@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+# File: init_uap
+# Descripton: Initializes the micro Access Point mode (uap0)
+#
+# Copyright (C) 2010-2011, IONICS-EMS Inc.
+
+check=`ifconfig  |grep uap0| awk {'print $1'}`
+checksd8xxx=`lsmod | grep sd8xxx -m 1| awk {'print $1'}`
+ssid=`ifconfig -a | grep uap0 | awk {'print $5'} | cut -b 10,11,13,14,16,17`
+
+if [ -z $check ]; then
+   
+   echo 0 >/sys/class/gpio/gpio48/value
+   sleep 1
+
+    if [ -z $checksd8xxx ]; then
+      continue
+    else
+      rmmod sd8xxx mcypt #libertas_sdio libertas
+    fi
+
+   echo 1 >/sys/class/gpio/gpio48/value
+   rmmod libertas_sdio libertas
+   cp /root/setup/fw/uap/* /lib/firmware/mrvl/
+   sleep 4
+
+   ifconfig uap0 192.168.1.1 up
+   /usr/bin/uaputl sys_cfg_ssid STRATUS-$ssid
+   /usr/bin/uaputl bss_start
+   iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+   iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
+   echo 1 > /proc/sys/net/ipv4/ip_forward
+   /etc/init.d/udhcpd start
+   iptables -A INPUT -i uap0 -p tcp -m tcp --dport 80 -j ACCEPT
+
+   rmmod btmrvl_sdio btmrvl
+else
+
+   echo "Warning: uap0 already available!"
+
+fi

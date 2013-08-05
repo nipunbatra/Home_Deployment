@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# File: init_pluginfo
+# Descripton: Mounts the pluginfo partition
+#
+# Copyright (C) 2010-2011, IONICS-EMS Inc.
+
+mkdir -p /pluginfo
+check=`ubinfo | grep ubi1 | awk {'print $5'}`
+if [ -z $check ]; then
+/usr/sbin/ubiattach /dev/ubi_ctrl -m 2
+/bin/mount -t ubifs ubi1:pluginfo /pluginfo
+fi
+

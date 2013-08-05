@@ -1,0 +1,140 @@
+#!/bin/bash
+#
+# File: run_reflash
+# Descripton: Performs software update on the IONICS plugcomputer
+#
+# Copyright (C) 2010-2011, IONICS-EMS Inc.
+
+# Perform Preliminary check
+# 1. Checks presence of USB thumbdrive
+# 2. Compares checksum values
+
+if [ -e /dev/sda1 ]; then
+   mount /dev/sda1 /mnt
+else
+   mount /dev/sda /mnt
+fi
+
+clear
+/root/setup/plugflasher/status_check &
+sleep 2
+
+check=`mount | grep sda | awk {'print $1'}`
+if [ -z $check ]; then
+pkill status_check
+clear
+echo ""
+echo "Error: Insert USB thumbdrive with SW package"
+echo ""
+exit
+fi
+
+cd /mnt
+check1=`md5sum -c --quiet checksum | grep FAILED -m 1 | awk {'print $1'}`
+check2=`md5sum -c --quiet checksum`
+
+if [ -z $check1 ]; then
+pkill status_check
+clear
+echo ""
+echo "====================================================================="
+echo "IONICS PlugFlasher"
+echo "\"Performs software update on the IONICS plugcomputer\""
+echo ""
+echo "Menu:"
+echo "1 - Update kernel"
+echo "2 - Update kernel and filesystem"
+echo "3 - Update bootloader (unsafe)"
+echo "4 - Exit"
+echo ""
+echo "====================================================================="
+echo -ne "Enter choice: "
+read selection
+
+# Kernel Update
+   if [ $selection -eq 1 ]; then
+      clear
+      echo ""
+      echo "Kernel Update"
+      echo "Warning: This will replace the linux kernel and modules"
+      echo -ne "Continue?(y/n): "
+      read confirm
+         if [ $confirm == "y" ]; then
+            mtd=`cat /proc/mtd | grep kernel | awk {'print $1'} | cut -d":" -f1`
+            version=`uname -r`
+            flash_eraseall /dev/$mtd
+            nandwrite -pq /dev/$mtd /mnt/uImage
+            rm -fR /lib/modules/$version
+            cd /
+            /root/setup/plugflasher/bar /mnt/modules.tar.gz | tar xzpf -
+            echo "Issue a manual reboot to complete the update..."
+            echo ""
+         else
+            umount -l /mnt
+            exit
+         fi
+
+   fi
+
+
+# Kernel and Filesystem update
+   if [ $selection -eq 2 ]; then
+      clear
+      echo ""
+      echo "Kernel and Filesystem update"
+      echo "Warning: This will erase your kernel and filesystem!"
+      echo -ne "Continue? (y/n): "
+      read confirm
+         if [ $confirm == "y" ]; then
+            cat > /etc/fw_env.config << EOF
+/dev/mtd0 0x60000 0x20000 0x20000
+EOF
+            fw_setenv bootcmd 'run ubi_bootcmd ; run reflash_usr'
+            rm /etc/fw_env.config
+            reboot
+         else
+            umount -l /mnt 
+            exit
+         fi
+   fi
+
+
+# Bootloader update
+   if [ $selection -eq 3 ]; then
+      clear
+      echo ""
+      echo "Performing bootloader update"
+      echo "Warning: This will replace the current bootloader"
+      echo "         This procedure may render the plugcomputer unbootable"
+      echo "         All identification (i.e. S/N ) info will be lost"
+      echo "         Do not proceed unless you know what you are doing!"
+      echo -ne "Continue? (y/n): "
+      read confirm
+         if [ $confirm == "y" ]; then
+            cat > /etc/fw_env.config << EOF
+/dev/mtd0 0x60000 0x20000 0x20000
+EOF
+           fw_setenv load_uboot 'usb start ; fatload usb 0 0x800000 /u-boot.kwb'
+           fw_setenv reflash_uboot 'run load_uboot ; nand erase.part u-boot ; nand write 0x800000 0x0 0x100000; reset'
+           fw_setenv bootcmd 'run reflash_uboot'
+           rm /etc/fw_env.config
+           reboot
+        else
+            umount -l /mnt
+            exit
+        fi
+   fi
+
+   if [ $selection -gt 3 ]; then
+      umount -l /mnt
+      exit
+   fi
+
+else
+pkill status_check
+clear
+echo ""
+echo "SW Package checksum = NOK" 
+echo "$check2"
+echo ""
+fi

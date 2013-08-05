@@ -1,0 +1,64 @@
+#!/bin/bash
+#
+# File: run_reflash
+# Descripton: Calls the user reflash tool
+#
+# Copyright (C) 2010-2011, IONICS-EMS Inc.
+
+clear
+echo ""
+echo "====================================================================="
+echo "IONICS PlugFlasher"
+echo ""
+echo "This will perform a complete NAND reflash using"
+echo "the SW package in the USB thumbdrive."
+echo ""
+echo "====================================================================="
+echo ""
+sleep 2
+read -t 5
+if [ $? == 0 ]; then
+   exit
+else
+   if [ -e /dev/sda1 ]; then
+      mount /dev/sda1 /mnt
+   else
+      mount /dev/sda /mnt
+   fi
+
+   clear
+   /root/setup/plugflasher/status_check &
+   sleep 2
+
+   check=`mount | grep sda | awk {'print $1'}`
+   if [ -z $check ]; then
+      pkill status_check
+      clear
+      echo ""
+      echo "Error: Insert USB thumbdrive with SW package"
+      echo ""
+      exit
+   fi
+
+   cd /mnt
+   check1=`md5sum -c --quiet checksum | grep FAILED -m 1 | awk {'print $1'}`
+   check2=`md5sum -c --quiet checksum`
+
+   if [ -z $check1 ]; then
+      pkill status_check
+      clear
+
+   cat > /etc/fw_env.config << EOF
+/dev/mtd0 0x60000 0x20000 0x20000
+EOF
+      fw_setenv bootcmd 'run ubi_bootcmd ; run reflash_usr'
+      rm /etc/fw_env.config
+      reboot
+
+   else
+      echo ""
+      echo "SW Package checksum = NOK" 
+      echo "$check2"
+      echo ""
+   fi
+fi
