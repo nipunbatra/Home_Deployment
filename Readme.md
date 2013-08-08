@@ -1,6 +1,8 @@
 ## It's different: Insights into home energy consumption in India
 ##### Nipun Batra, Manoj Gulati, Amarjeet Singh, Mani Srivastava
 
+---
+
 ### Deployment Overview
 
 ![alt text](https://dl.dropboxusercontent.com/u/75845627/Deployment/overall_deployment.jpg "Deployment in Home I")
