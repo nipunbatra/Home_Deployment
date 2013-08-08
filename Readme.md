@@ -3,6 +3,12 @@
 
 ###### Special thanks: [Milan Jain](http://milanjain.wordpress.com/), [Shailja Thakur](http://shailjathakur.wordpress.com/)
 
+<p align="left">
+  <img src="https://dl.dropboxusercontent.com/u/75845627/Deployment/ucla.jpg" alt="Ground floor labeling" width="50%" height="50%"/>
+</p>
+<p align="right">
+  <img src="https://dl.dropboxusercontent.com/u/75845627/Deployment/iiit.jpg" alt="Ground floor labeling" width="50%" height="50%"/>
+</p>
 ---
 
 ### Deployment Overview
