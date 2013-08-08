@@ -29,36 +29,71 @@
       <div class="inner clearfix">
         <section id="main-content">
           <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<a name="deployment-overview" class="anchor" href="#deployment-overview"><span class="octicon octicon-link"></span></a>Deployment Overview</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p><img src="https://dl.dropboxusercontent.com/u/75845627/Deployment/overall_deployment.jpg" alt="alt text" title="Deployment in Home I"></p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<p>The figure above shows the overall deployment across a 3 storey home in Delhi, India. We deployed a total of 33 sensors measuring the following different parameters:</p>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<ol>
+<li>Electricity
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<ul>
+<li>Household level (using Schnieder Electric EM6400 smart meter)</li>
+<li>MCB level (using custom microcontroller based CT platform)</li>
+<li>Appliance level (using jPlug, developed by Radio Studio, India)</li>
+</ul>
+</li>
+<li>Water
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<ul>
+<li>At inlet from utility and outlet from water tank (using Pulse based water meters)</li>
+</ul>
+</li>
+<li>Ambient parameters
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<ul>
+<li>Motion (using Express Controls HSM100)</li>
+<li>Light, temperature (using Express Controls HSM100 and FunF journal on Android phones)</li>
+</ul>
+</li>
+<li>Connectivity and Network (using Android, soft sensor streams)</li>
+<li>Weather (using 3 weather monitoring stations providing data via REST APIs)</li>
+</ol><h3>
+<a name="repository-structure" class="anchor" href="#repository-structure"><span class="octicon octicon-link"></span></a>Repository Structure</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>This repository is divided as follows:</p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<ul>
+<li>Configuration
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<ul>
+<li>Database schemas: Schemas for MySQL databases used in the deployment</li>
+<li>Misc: Miscellaneous mappings between sensor id and locaiton in home</li>
+</ul>
+</li>
+<li>Dataset
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<ul>
+<li>Annotated dataset: Contains <em>fully</em> labeled dataset from our deployment</li>
+<li>Metadata: Contains pertinent metadata</li>
+</ul>
+</li>
+</ul><p>For each of these you may find more details in the respective Readme files
+in corresponding folders.</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>The following is the port assignment to different services</p>
+
+<ul>
+<li>80 - Data from JPlug is written using PhP script to files in /var/www</li>
+<li>9000- To manually go and check the last 10 readings of individual JPlugs</li>
+<li>9001- Data from smart meter is upload (CSV's) and can be visualized</li>
+<li>9002- Data from CT's is uploaded and can be visualized</li>
+<li>9003- Data from water meter is uploaded (pulses) and can be seen</li>
+<li>9004- Data from Multisensors is uploaded and can be visualized</li>
+<li>9009- Memory, CPU, Disk Memory, Client Time</li>
+<li>9010- An application is run which tells about the status of different deployments done above</li>
+</ul>
         </section>
 
         <aside id="sidebar">
