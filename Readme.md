@@ -6,11 +6,14 @@ The figure above shows the overall deployment across a 3 storey home in Delhi, I
    * Household level (using Schnieder Electric EM6400 smart meter)
    * MCB level (using custom microcontroller based CT platform)
    * Appliance level (using jPlug, developed by Radio Studio, India)
-2. Appliance level data using jPlug and Current Cost Clamp Meter
-3. Water meter data
-4. CT data
-5. Data from Android
-6. Alerts- SMS, Email
+2. Water
+   * At inlet from utility and outlet from water tank (using Pulse based water meters)
+3. Ambient parameters
+   * Motion (using Express Controls HSM100)
+   * Light, temperature (using Express Controls HSM100 and FunF journal on Android phones)
+4. Connectivity and Network (using Android, soft sensor streams)
+5. Weather (using 3 weather monitoring stations providing data via REST APIs)
+
 
 For each of these you may find more details in the respective Readme files
 in corresponding folders.
