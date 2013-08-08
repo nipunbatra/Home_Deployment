@@ -1,7 +1,7 @@
 ## It's different: Insights into home energy consumption in India
 ##### Nipun Batra, Manoj Gulati, Amarjeet Singh, Mani Srivastava
 
-##### Special thanks: Milan Jain, Shailja Thakur
+###### Special thanks: Milan Jain, Shailja Thakur
 
 ---
 
