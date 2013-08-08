@@ -3,12 +3,7 @@
 
 ###### Special thanks: [Milan Jain](http://milanjain.wordpress.com/), [Shailja Thakur](http://shailjathakur.wordpress.com/)
 
-<p align="left">
-  <img src="https://dl.dropboxusercontent.com/u/75845627/Deployment/ucla.jpg" alt="Ground floor labeling" width="50%" height="50%"/>
-</p>
-<p align="right">
-  <img src="https://dl.dropboxusercontent.com/u/75845627/Deployment/iiit.jpg" alt="Ground floor labeling" width="50%" height="50%"/>
-</p>
+
 ---
 
 ### Deployment Overview
@@ -58,3 +53,10 @@ One can also find the various issues and how we resolved them.
 
 1. The detailed metadata dataset can be found [here](https://github.com/nipunreddevil/Home_Deployment/wiki/Appliance-Metadata).
 2. The UTC timestamped annotated dataset can be found [here](https://github.com/nipunreddevil/Home_Deployment/tree/master/dataset). The event sequence for the same and more information about the same can be found on the same page.
+
+<p align="right">
+  <img src="https://dl.dropboxusercontent.com/u/75845627/Deployment/ucla.png" alt="Ground floor labeling" width="42" height="30"/>
+</p>
+<p align="left">
+  <img src="https://dl.dropboxusercontent.com/u/75845627/Deployment/iiit.jpg" alt="Ground floor labeling" width="42" height="30"/>
+</p>
