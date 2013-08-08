@@ -1,5 +1,5 @@
 ## It's different: Insights into home energy consumption in India
-##### (Nipun Batra([http://www.nipunbatra.wordpress.com], Manoj Gulati, Amarjeet Singh, Mani Srivastava
+##### (Nipun Batra)[http://www.nipunbatra.wordpress.com], Manoj Gulati, Amarjeet Singh, Mani Srivastava
 
 ###### Special thanks: Milan Jain, Shailja Thakur
 
