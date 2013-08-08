@@ -1,4 +1,4 @@
-![alt text](https://dl.dropboxusercontent.com/u/75845627/Deployment/Deployment_Home_1.jpg "Deployment in Home I")
+![alt text](https://dl.dropboxusercontent.com/u/75845627/Deployment/overall_deployment.jpg "Deployment in Home I")
 
 This deployment covers the following:
 
