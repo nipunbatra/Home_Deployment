@@ -1,5 +1,5 @@
-## It's different: Insights into energy consumption in India
-#### Nipun Batra, Manoj Gulati, Amarjeet Singh, Mani Srivastava
+## It's different: Insights into home energy consumption in India
+##### Nipun Batra, Manoj Gulati, Amarjeet Singh, Mani Srivastava
 
 ### Deployment Overview
 
