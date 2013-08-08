@@ -54,10 +54,10 @@ One can also find the various issues and how we resolved them.
 1. The detailed metadata dataset can be found [here](https://github.com/nipunreddevil/Home_Deployment/wiki/Appliance-Metadata).
 2. The UTC timestamped annotated dataset can be found [here](https://github.com/nipunreddevil/Home_Deployment/tree/master/dataset). The event sequence for the same and more information about the same can be found on the same page.
 
-<p align="left">
+<p align="center">
   <img src="https://dl.dropboxusercontent.com/u/75845627/Deployment/iiit.jpg" alt="Ground floor labeling" width="60" height="40"/>
 </p>
-<p align="right">
+<p align="center">
   <img src="https://dl.dropboxusercontent.com/u/75845627/Deployment/ucla.png" alt="Ground floor labeling" width="60" height="40"/>
 </p>
 
