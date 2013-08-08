@@ -1,9 +1,11 @@
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+This dataset contains two types of datasets:
 
+1. Electrical events annotation: which shows electrical events captured at different granularities for different appliances
+2. Multi-modal dataset: Smaller dataset where residents recorded their activity, across appliance usage, water consumption, occupancy etc.
+
+#### Electrical events annotation
+
+Event sequence was recorded on 4th August 2013. All times are Indian Standard Time (IST = GMT+5.5 hrs). Here ID refers to ID in the room. For example, if there are 4 identical fans in the room, it would suffice to label one of them, which may take ID from 1-4.
 
 |Sno|Time|Floor|Room|Type|Specific|ID|Event|
 |----|------|----|----|-----|-----|--------|----|
@@ -11,8 +13,8 @@
 |2|12: 18|1|Big|Lighting|Tubelight|1|Turned OFF|
 |3|12: 19|1|Big|Fan|Ceiling fan|1|Turned ON|
 |4|12: 20|1|Big|Fan|Ceiling fan|1|Turned OFF|
-|5|12: 21|1|Big|IrON||Electric IrON||1|Turned ON|
-|6|12: 25|1|Big|IrON||Electric IrON||1|Turned OFF|
+|5|12: 21|1|Big|Iron|Electric Iron|1|Turned ON|
+|6|12: 25|1|Big|Iron|Electric Iron|1|Turned OFF|
 |7|12: 26|1|Washing Area|Washing Machine|Washing Machine|1|Turned ON|
 |8|12: 30|1|Washing Area|Washing Machine|Washing Machine|1|Turned OFF|
 |9|12: 31|1|Small|Fan|Ceiling fan|1|Turned ON|
@@ -108,3 +110,6 @@
 |99|15: 10|0|Kitchen|Mixer|Mixer|1|Turned ON|
 |100|15: 11|0|Kitchen|Mixer|Mixer|1|Turned OFF|
 |101|15: 12|0|Kitchen|Refrigerator|Refrigerator|1|Turned ON|
+
+
+#### Multi-modal dataset
