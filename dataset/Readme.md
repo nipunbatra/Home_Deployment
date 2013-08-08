@@ -1,3 +1,10 @@
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+
 |Sno|Time|Floor|Room|Type|Specific|ID|Event|
 |----|------|----|----|-----|-----|--------|
 |1|12: 17|1|Big|Lighting|Tubelight|1|Turned ON|
