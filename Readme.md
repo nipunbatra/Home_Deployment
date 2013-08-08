@@ -25,7 +25,22 @@ This repository is divided as follows:
    * Misc: Miscellaneous mappings between sensor id and locaiton in home
 * Dataset
    * Annotated dataset: Contains *fully* labeled dataset from our deployment
-   * Metadata: Contains pertinent metadata
+   * Metadata: Contains pertinent metadata for different appliances in the home and different water fixtures
+* How To: Misc. how to guides which are not specific to the deployment, but used in our case
+* Software:
+   * Common: Software common to SBCs and Server
+   * Sensors_SBC: Software used by different sensors/SBCs to get data from sensors
+   * Server: Software used for server management
+   * Startup scripts: Various startup scripts used for uninterrupted data collection (even after power outage)
+   * Installation: How to prepare the various computational systems for deployment
+   * Stats: Scripts and their outputs used for the plots used in the paper
+* Deployment notes
+
+One can also find the various issues and how we resolved them.
+
+1. [Open Issues](https://github.com/nipunreddevil/Home_Deployment/issues?state=open)
+2. [Closed Issues](https://github.com/nipunreddevil/Home_Deployment/issues?page=1&state=closed)
+
 
 For each of these you may find more details in the respective Readme files
 in corresponding folders.
