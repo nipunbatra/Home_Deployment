@@ -6,7 +6,7 @@
 
 
 |Sno|Time|Floor|Room|Type|Specific|ID|Event|
-|----|------|----|----|-----|-----|--------|
+|----|------|----|----|-----|-----|--------|----|
 |1|12: 17|1|Big|Lighting|Tubelight|1|Turned ON|
 |2|12: 18|1|Big|Lighting|Tubelight|1|Turned OFF|
 |3|12: 19|1|Big|Fan|Ceiling fan|1|Turned ON|
