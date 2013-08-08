@@ -16,6 +16,16 @@ The figure above shows the overall deployment across a 3 storey home in Delhi, I
 4. Connectivity and Network (using Android, soft sensor streams)
 5. Weather (using 3 weather monitoring stations providing data via REST APIs)
 
+### Repository Structure
+
+This repository is divided as follows:
+
+* Configuration
+   * Database schemas: Schemas for MySQL databases used in the deployment
+   * Misc: Miscellaneous mappings between sensor id and locaiton in home
+* Dataset
+   * Annotated dataset: Contains *fully* labeled dataset from our deployment
+   * Metadata: Contains pertinent metadata
 
 For each of these you may find more details in the respective Readme files
 in corresponding folders.
