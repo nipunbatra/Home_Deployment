@@ -41,17 +41,7 @@ One can also find the various issues and how we resolved them.
 1. [Open Issues](https://github.com/nipunreddevil/Home_Deployment/issues?state=open)
 2. [Closed Issues](https://github.com/nipunreddevil/Home_Deployment/issues?page=1&state=closed)
 
+### Dataset
 
-For each of these you may find more details in the respective Readme files
-in corresponding folders.
-
-The following is the port assignment to different services
-
-* 80 - Data from JPlug is written using PhP script to files in /var/www
-* 9000- To manually go and check the last 10 readings of individual JPlugs
-* 9001- Data from smart meter is upload (CSV's) and can be visualized
-* 9002- Data from CT's is uploaded and can be visualized
-* 9003- Data from water meter is uploaded (pulses) and can be seen
-* 9004- Data from Multisensors is uploaded and can be visualized
-* 9009- Memory, CPU, Disk Memory, Client Time
-* 9010- An application is run which tells about the status of different deployments done above
+1. The detailed metadata dataset can be found [here](https://github.com/nipunreddevil/Home_Deployment/wiki/Appliance-Metadata).
+2. The UTC timestamped annotated dataset can be found [here](https://github.com/nipunreddevil/Home_Deployment/tree/master/dataset). The event sequence for the same and more information about the same can be found on the same page.
