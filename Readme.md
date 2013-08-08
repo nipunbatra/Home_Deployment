@@ -12,17 +12,17 @@
 
 The figure above shows the overall deployment across a 3 storey home in Delhi, India. We deployed a total of 33 sensors measuring the following different parameters:
 
-1. Electricity
+* Electricity
    * Household level (using Schnieder Electric EM6400 smart meter)
    * MCB level (using custom microcontroller based CT platform)
    * Appliance level (using jPlug, developed by Radio Studio, India)
-2. Water
+* Water
    * At inlet from utility and outlet from water tank (using Pulse based water meters)
-3. Ambient parameters
+* Ambient parameters
    * Motion (using Express Controls HSM100)
    * Light, temperature (using Express Controls HSM100 and FunF journal on Android phones)
-4. Connectivity and Network (using Android, soft sensor streams)
-5. Weather (using 3 weather monitoring stations providing data via REST APIs)
+* Connectivity and Network (using Android, soft sensor streams)
+* Weather (using 3 weather monitoring stations providing data via REST APIs)
 
 ### Repository Structure
 
