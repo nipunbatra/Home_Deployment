@@ -1,8 +1,11 @@
 ![alt text](https://dl.dropboxusercontent.com/u/75845627/Deployment/overall_deployment.jpg "Deployment in Home I")
 
-This deployment covers the following:
+The figure above shows the overall deployment across a 3 storey home in Delhi, India. We deployed a total of 33 sensors measuring the following different parameters:
 
-1. Overall electricity meter level data
+1. Electricity
+* Household level (using Schnieder Electric EM6400 smart meter)
+* MCB level (using custom microcontroller based CT platform)
+* Appliance level (using jPlug, developed by Radio Studio, India)
 2. Appliance level data using jPlug and Current Cost Clamp Meter
 3. Water meter data
 4. CT data
