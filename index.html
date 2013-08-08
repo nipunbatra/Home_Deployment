@@ -28,7 +28,16 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <h3>
+          <h2>
+<a name="its-different-insights-into-home-energy-consumption-in-india" class="anchor" href="#its-different-insights-into-home-energy-consumption-in-india"><span class="octicon octicon-link"></span></a>It's different: Insights into home energy consumption in India</h2>
+
+<h5>
+<a name="nipun-batra-manoj-gulati-amarjeet-singh-mani-srivastava" class="anchor" href="#nipun-batra-manoj-gulati-amarjeet-singh-mani-srivastava"><span class="octicon octicon-link"></span></a>Nipun Batra, Manoj Gulati, Amarjeet Singh, Mani Srivastava</h5>
+
+<h6>
+<a name="special-thanks-milan-jain-shailja-thakur" class="anchor" href="#special-thanks-milan-jain-shailja-thakur"><span class="octicon octicon-link"></span></a>Special thanks: Milan Jain, Shailja Thakur</h6>
+
+<hr><h3>
 <a name="deployment-overview" class="anchor" href="#deployment-overview"><span class="octicon octicon-link"></span></a>Deployment Overview</h3>
 
 <p><img src="https://dl.dropboxusercontent.com/u/75845627/Deployment/overall_deployment.jpg" alt="alt text" title="Deployment in Home I"></p>
@@ -76,24 +85,34 @@
 
 <ul>
 <li>Annotated dataset: Contains <em>fully</em> labeled dataset from our deployment</li>
-<li>Metadata: Contains pertinent metadata</li>
+<li>Metadata: Contains pertinent metadata for different appliances in the home and different water fixtures</li>
 </ul>
 </li>
-</ul><p>For each of these you may find more details in the respective Readme files
-in corresponding folders.</p>
-
-<p>The following is the port assignment to different services</p>
+<li>How To: Misc. how to guides which are not specific to the deployment, but used in our case</li>
+<li>Software:
 
 <ul>
-<li>80 - Data from JPlug is written using PhP script to files in /var/www</li>
-<li>9000- To manually go and check the last 10 readings of individual JPlugs</li>
-<li>9001- Data from smart meter is upload (CSV's) and can be visualized</li>
-<li>9002- Data from CT's is uploaded and can be visualized</li>
-<li>9003- Data from water meter is uploaded (pulses) and can be seen</li>
-<li>9004- Data from Multisensors is uploaded and can be visualized</li>
-<li>9009- Memory, CPU, Disk Memory, Client Time</li>
-<li>9010- An application is run which tells about the status of different deployments done above</li>
+<li>Common: Software common to SBCs and Server</li>
+<li>Sensors_SBC: Software used by different sensors/SBCs to get data from sensors</li>
+<li>Server: Software used for server management</li>
+<li>Startup scripts: Various startup scripts used for uninterrupted data collection (even after power outage)</li>
+<li>Installation: How to prepare the various computational systems for deployment</li>
+<li>Stats: Scripts and their outputs used for the plots used in the paper</li>
 </ul>
+</li>
+<li>Deployment notes</li>
+</ul><p>One can also find the various issues and how we resolved them.</p>
+
+<ol>
+<li><a href="https://github.com/nipunreddevil/Home_Deployment/issues?state=open">Open Issues</a></li>
+<li><a href="https://github.com/nipunreddevil/Home_Deployment/issues?page=1&amp;state=closed">Closed Issues</a></li>
+</ol><h3>
+<a name="dataset" class="anchor" href="#dataset"><span class="octicon octicon-link"></span></a>Dataset</h3>
+
+<ol>
+<li>The detailed metadata dataset can be found <a href="https://github.com/nipunreddevil/Home_Deployment/wiki/Appliance-Metadata">here</a>.</li>
+<li>The UTC timestamped annotated dataset can be found <a href="https://github.com/nipunreddevil/Home_Deployment/tree/master/dataset">here</a>. The event sequence for the same and more information about the same can be found on the same page.</li>
+</ol>
         </section>
 
         <aside id="sidebar">
