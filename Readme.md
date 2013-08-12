@@ -6,7 +6,7 @@
 
 ---
 
-    You can view a prettier rendering of the same page [here](http://nipunreddevil.github.io/Home_Deployment/)
+**NB:** You can view a prettier rendering of the same page [here](http://nipunreddevil.github.io/Home_Deployment/)
 
 
 ### Deployment Overview
