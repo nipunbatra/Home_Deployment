@@ -118,9 +118,10 @@ The instrumented home has 3 occupants- A, B and C. The following is a collection
 
 This dataset is of the form
 
-<-timestamp, [event1, event2, …]->
+    <-timestamp, [event1, event2, …]->
 where
-event = <-person, object, action->
+
+    event = <-person, object, action->
 
 |Time|Event List|
 |----|------|
