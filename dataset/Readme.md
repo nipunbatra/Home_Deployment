@@ -118,30 +118,30 @@ The instrumented home has 3 occupants- A, B and C. The following is a collection
 
 This dataset is of the form
 
-<timestamp, [event1, event2, …]>
+<-timestamp, [event1, event2, …]->
 where
-event = <person, object, action>
+event = <-person, object, action->
 
 |Time|Event List|
 |----|------|
-|6:05 AM| [<B, room 1 first floor, wake up>, <B, bathroom second floor, flush>]|
-|6:35 AM| [<B, room 1 ground floor, enter>, <B, room 1 ground floor,turn on light>]|
-|7:27 AM| [<A, room 2 first floor, wake up>, <A, room 2 first floor, turn on light and laptop charger>]|
-|7:29 AM| [<A, washroom first floor, enter>, <A, washroom first floor, turns on CFL>]|
-|7:31 AM| [<A, washroom first floor, turns off CFL>, <A, room 2 first floor, enter>]|
-|7:35 AM| [<B, kitchen ground floor, enter>, <B, kitchen ground floor, turns on mixer>, <B, kitchen ground floor, turns off lights>]|
-|7:35 AM| [<C, room 1 ground floor, turns on light and fan>]|
-|7:40 AM| [<B, kitchen ground floor, enter>, <B, kitchen ground floor, turn off mixer>]
-|8:05 AM| [<C, bathroom ground floor, enter>, <C,bathroom ground floor, light on>]|
-|8:06 AM| <A, room 2 first floor, enter>, <A, room 1 ground floor, turns off fan>], <A, room 2 first floor, turn on fan>]|
-|8:35 AM| [<A, room 2 first floor, turns off fan>]|
-|8:36 - 8:58 AM| [<A, bathroom second floor, enter>, <A, bathroom second floor, turns on CFL+ Fan> , <A, bathroom second floor, turns off CFL+ Fan>, <A, room second floor, enter>,<A, room second floor, light+fan on>, <A, room second floor, light+fan off>]|
-|8:59 AM| [<A, room 2 first floor, enter>, <A, room 2 first floor, turns on fan and laptop charger>]|
-|9:42 AM| [<C, room 1 ground floor, turns on TV>]|
-|9:52 AM| [<B, room 1 ground floor, turns off TV>]|
-|9:53 AM| [<A, room 2 first floor, turns off light, fan, laptop>, <A, room 2 first floor, exit>, <A, ground floor, enter>]|
-|10:25 AM| [<A, kitchen, takes water from water filter>]|
-|10:30 AM| [<A, wash basin ground floor,  washes hands>]|
-|10:33 AM| [<B, kitchen, CFL turned on>]|
-|10:54 AM| [<A, room 2 first floor, enter>, <A, room 2 first floor, turns on light, fan, laptop>]|
+|6:05 AM| [<-B, room 1 first floor, wake up->, <-B, bathroom second floor, flush->]|
+|6:35 AM| [<-B, room 1 ground floor, enter->, <-B, room 1 ground floor,turn on light->]|
+|7:27 AM| [<-A, room 2 first floor, wake up->, <-A, room 2 first floor, turn on light and laptop charger->]|
+|7:29 AM| [<-A, washroom first floor, enter->, <-A, washroom first floor, turns on CFL->]|
+|7:31 AM| [<-A, washroom first floor, turns off CFL->, <-A, room 2 first floor, enter->]|
+|7:35 AM| [<-B, kitchen ground floor, enter->, <-B, kitchen ground floor, turns on mixer->, <-B, kitchen ground floor, turns off lights->]|
+|7:35 AM| [<-C, room 1 ground floor, turns on light and fan->]|
+|7:40 AM| [<-B, kitchen ground floor, enter->, <-B, kitchen ground floor, turn off mixer->]
+|8:05 AM| [<-C, bathroom ground floor, enter->, <-C,bathroom ground floor, light on->]|
+|8:06 AM| <-A, room 2 first floor, enter->, <-A, room 1 ground floor, turns off fan->], <-A, room 2 first floor, turn on fan->]|
+|8:35 AM| [<-A, room 2 first floor, turns off fan->]|
+|8:36 - 8:58 AM| [<-A, bathroom second floor, enter->, <-A, bathroom second floor, turns on CFL+ Fan-> , <-A, bathroom second floor, turns off CFL+ Fan->, <-A, room second floor, enter->,<-A, room second floor, light+fan on->, <-A, room second floor, light+fan off->]|
+|8:59 AM| [<-A, room 2 first floor, enter->, <-A, room 2 first floor, turns on fan and laptop charger->]|
+|9:42 AM| [<-C, room 1 ground floor, turns on TV->]|
+|9:52 AM| [<-B, room 1 ground floor, turns off TV->]|
+|9:53 AM| [<-A, room 2 first floor, turns off light, fan, laptop->, <-A, room 2 first floor, exit->, <-A, ground floor, enter->]|
+|10:25 AM| [<-A, kitchen, takes water from water filter->]|
+|10:30 AM| [<-A, wash basin ground floor,  washes hands->]|
+|10:33 AM| [<-B, kitchen, CFL turned on->]|
+|10:54 AM| [<-A, room 2 first floor, enter->, <-A, room 2 first floor, turns on light, fan, laptop->]|
 
