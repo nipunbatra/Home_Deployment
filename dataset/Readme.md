@@ -116,27 +116,32 @@ Event sequence was recorded on 4th August 2013. All times are Indian Standard Ti
 
 The instrumented home has 3 occupants- A, B and C. The following is a collection of events "recorded" to nearest proximity by the residents. The residents continues their routines and tried to record as many events as possible.
 
-|Time|Event|
+This dataset is of the form
+
+<timestamp, [event1, event2, …]>
+where
+event = <person, object, action>
+
+|Time|Event List|
 |----|------|
-|6:05 AM| B wakes up and goes to 2nd floor bathroom|
-|6:35 AM| B goes to ground floor and turns on light|
-|7:27 AM| A wakes up, turns on light and laptop charger|
-|7:29 AM| A goes to 1st floor washroom and turns on CFL|
-|7:31 AM| A turns off CFL and comes to room|
-|7:35 AM| B turns on mixer for 5 minutes in the kitchen|
-|7:35 AM| B turns off kitchen light|
-|7:35 AM| C turns on light and fan in big room on the ground floor|
-|8:05 AM| Bathroom light ON ground floor, big room ground floor tubelight off|
-|8:06 AM| A goes to first floor|
-|8:06 AM| Fan in big room on ground floor switched off|
-|8:35 AM| A turns off fan on first floor|
-|8:36 AM| A goes to bathroom on 2nd floor, turns on CFL+ Fan-> CFL+ Fan off-> 2nd floor light+fan ON-> both off|
-|8:59 AM| A goes to first floor, turns on fan and laptop charger|
-|9:42 AM| TV turned on|
-|9:52 AM| TV turned off|
-|9:53 AM| First floor light, fan, laptop turned off|
-|10:25 AM| A takes water from water filter|
-|10:30 AM| A washes hands in the ground floor wash basin|
-|10:33 AM| Ground floor CFL turned on|
-|10:54 AM| A turns on light, fan, laptop on first floor|
+|6:05 AM| [<B, room 1 first floor, wake up>, <B, bathroom second floor, flush>]|
+|6:35 AM| [<B, room 1 ground floor, enter>, <B, room 1 ground floor,turn on light>]|
+|7:27 AM| [<A, room 2 first floor, wake up>, <A, room 2 first floor, turn on light and laptop charger>]|
+|7:29 AM| [<A, washroom first floor, enter>, <A, washroom first floor, turns on CFL>]|
+|7:31 AM| [<A, washroom first floor, turns off CFL>, <A, room 2 first floor, enter>]|
+|7:35 AM| [<B, kitchen ground floor, enter>, <B, kitchen ground floor, turns on mixer>, <B, kitchen ground floor, turns off lights>]|
+|7:35 AM| [<C, room 1 ground floor, turns on light and fan>]|
+|7:40 AM| [<B, kitchen ground floor, enter>, <B, kitchen ground floor, turn off mixer>]
+|8:05 AM| [<C, bathroom ground floor, enter>, <C,bathroom ground floor, light on>]|
+|8:06 AM| <A, room 2 first floor, enter>, <A, room 1 ground floor, turns off fan>], <A, room 2 first floor, turn on fan>]|
+|8:35 AM| [<A, room 2 first floor, turns off fan>]|
+|8:36 - 8:58 AM| [<A, bathroom second floor, enter>, <A, bathroom second floor, turns on CFL+ Fan> , <A, bathroom second floor, turns off CFL+ Fan>, <A, room second floor, enter>,<A, room second floor, light+fan on>, <A, room second floor, light+fan off>]|
+|8:59 AM| [<A, room 2 first floor, enter>, <A, room 2 first floor, turns on fan and laptop charger>]|
+|9:42 AM| [<C, room 1 ground floor, turns on TV>]|
+|9:52 AM| [<B, room 1 ground floor, turns off TV>]|
+|9:53 AM| [<A, room 2 first floor, turns off light, fan, laptop>, <A, room 2 first floor, exit>, <A, ground floor, enter>]|
+|10:25 AM| [<A, kitchen, takes water from water filter>]|
+|10:30 AM| [<A, wash basin ground floor,  washes hands>]|
+|10:33 AM| [<B, kitchen, CFL turned on>]|
+|10:54 AM| [<A, room 2 first floor, enter>, <A, room 2 first floor, turns on light, fan, laptop>]|
 
