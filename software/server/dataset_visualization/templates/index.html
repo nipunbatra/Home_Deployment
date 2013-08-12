@@ -1,0 +1,138 @@
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="../static/stylesheets/jquery-ui-1.8.21.custom.css">
+<link rel="stylesheet" type="text/css" href="../static/stylesheets/jquery-ui-timepicker-addon.css">
+<link rel="stylesheet" type="text/css" href="../static/stylesheets/jquery-ui-timepicker-addon.css">
+<link rel="stylesheet" type="text/css" href="../static/stylesheets/jquery.noty.css">
+<link rel="stylesheet" type="text/css" href="../static/stylesheets/noty_theme_twitter.css">
+<script src="../static/javascripts/jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="../static/javascripts/jquery-ui-1.8.20.custom.min.js" type="text/javascript"></script>
+<script src="../static/javascripts/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+<script src="../static/javascripts/utilityFunctions.js" type="text/javascript"></script>
+<script src="../static/javascripts/jquery.noty.js" type="text/javascript"></script>
+
+
+
+<script type="text/javascript">
+			jQuery(document).ready(function() {
+
+				
+				jQuery.ajaxSetup({
+					async : false
+				});
+			jQuery("#staticImage").hide();
+			createDateTimePicker("#start_date_time");
+			createDateTimePicker("#end_date_time");
+			jQuery("#start_date_time").val("2013-08-04-12:20");
+			jQuery("#end_date_time").val("2013-08-04-15:12");
+				jQuery("#view_data").click(function() {
+					
+					showNoty("Loading..","center",false);
+
+					var node_id,start_time,end_time;
+
+					
+					ct_id=jQuery("#ct_id").val();
+					node_id=jQuery("#node_id").val();
+					jplug_id=jQuery("#jplug_id").val();
+					start_time=datetimeToEpoch(jQuery("#start_date_time").val());
+					end_time=datetimeToEpoch(jQuery("#end_date_time").val());
+
+					var obj={};
+					obj["start_time"]=start_time;
+					obj["end_time"]=end_time;
+					obj["ct_id"]=ct_id;
+					obj["node_id"]=node_id;
+					obj["jplug_id"]=jplug_id;
+					
+					//alert(JSON.stringify(obj));
+					
+					
+					var receivedData={};
+					var temp="http://"+document.location.hostname+":"+document.location.port+"/";
+					jQuery.post(temp+"query", JSON.stringify(obj), function(data) {
+
+						
+							receivedData = data;
+						
+
+						});
+					jQuery.noty.closeAll();
+					//alert(JSON.stringify(receivedData));
+					var filename=receivedData["filename"];
+					var no_data=receivedData["no_data"];
+					if (no_data.length>0)
+						{
+							
+							showNoty("No data found for following sensors: "+no_data,"top",true);
+							
+							
+					}
+					jQuery("#staticImage").attr("src","../static/images/"+filename);
+					jQuery("#staticImage").show();
+
+				});
+
+			});
+			
+
+</script>
+</head>
+
+<body>
+	<title>Dataset Visualization</title>
+
+	
+
+<label>Start Time</label> <input type="text" id="start_date_time" name="start_date_time" readonly='false' />
+
+<br/>
+<label>End Time  </label> <input type="text" id="end_date_time" name="start_date_time" readonly='false' />
+
+	
+	<br/>
+	<hr/>
+	<label>CT id</label>
+	<select id=ct_id>
+  		<option value=1>1</option>
+  		<option value=2>2</option>
+ 	 	<option value=3>3</option>
+ 		 
+	</select>
+	
+	<br/>
+	<label>Multisensor id</label>
+	<select id=node_id>
+  		<option value=2>2</option>
+  		<option value=3>3</option>
+ 	 	<option value=4>4</option>
+ 	 	<option value=5>5</option>
+ 	 	<option value=6>6</option>
+ 	 	<option value=7>7</option>
+ 		 
+	</select>
+	<br/>
+	<label>jPlug id</label>
+	<select id=jplug_id>
+  		<option value="001EC00CC49C">001EC00CC49C</option>
+  		<option value="001EC00CC49F">001EC00CC49F</option>
+ 	 	<option value="001EC00CC4A1">001EC00CC4A1</option>
+ 		<option value="001EC00D7A18">001EC00D7A18</option>
+  		<option value="001EC00CC49D">001EC00CC49D</option>
+  		<option value="001EC00CC4A0">001EC00CC4A0</option>
+  		<option value="001EC00CC4AD">001EC00CC4AD</option>
+  		<option value="001EC00D7A1D">001EC00D7A1D</option>
+		<option value="001EC00D7A1C">001EC00D7A1C</option>
+		<option value="001EC00E6BBD">001EC00E6BBD</option>
+		<option value="001EC00E6BB6">001EC00E6BB6</option>
+	</select>
+
+	<button id="view_data">View</button>
+
+
+	<div id="hello"></div>
+	 <img id="staticImage"></img>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+###PIR
+
+| Field     | Type    | Null | Key | Default | Extra |
+|-----------|---------|------|-----|---------|-------|
+| meter_id  | int(11) | NO   | PRI | 0       |       |
+| timestamp | double(14,2) | NO   | PRI | 0       |       |
+| event   | int(11) | NO   |  | 0       |       |
