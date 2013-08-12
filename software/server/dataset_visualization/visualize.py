@@ -15,6 +15,10 @@ import random
 s = json.load(open("bmh_matplotlibrc.json") )
 matplotlib.rcParams.update(s)
 
+import pytz
+
+OFFSET=0
+
 TIMEZONE='Asia/Kolkata'
 
 urls = ('/query','query',
@@ -23,11 +27,11 @@ urls = ('/query','query',
 
 render = web.template.render('templates')
 
-smart_meter_data=pd.read_csv('/home/nipun/git/Home_Deployment/dataset/smart_meter.csv',index_col=0)['W']
-ct_data=pd.read_csv('/home/nipun/git/Home_Deployment/dataset/ct_data_controlled.csv',index_col=0,skipinitialspace=True,names=['id','current'])
-light_temp_data=pd.read_csv('/home/nipun/git/Home_Deployment/dataset/light_temp.csv',index_col=0,names=['node','light','temp'])
-jplug_data=pd.read_csv('/home/nipun/git/Home_Deployment/dataset/jplug.csv',index_col=0,names=['frequency','voltage','real','energy','cost','current','reactive','apparent','pf','phase','jplug_id'])
-pir_data=pd.read_csv('/home/nipun/git/Home_Deployment/dataset/pir.csv',index_col=0,names=['node'])
+smart_meter_data=pd.read_csv('../../../dataset/smart_meter.csv',index_col=0)['W']
+ct_data=pd.read_csv('../../../dataset/ct_data_controlled.csv',index_col=0,skipinitialspace=True,names=['id','current'])
+light_temp_data=pd.read_csv('../../../dataset/light_temp.csv',index_col=0,names=['node','light','temp'])
+jplug_data=pd.read_csv('../../../dataset/jplug.csv',index_col=0,names=['frequency','voltage','real','energy','cost','current','reactive','apparent','pf','phase','jplug_id'])
+pir_data=pd.read_csv('../../../dataset/pir.csv',index_col=0,names=['node'])
 
 
 
@@ -56,7 +60,7 @@ class query:
 		
 		idx_smart=(smart_meter_data.index>start_time) & (smart_meter_data.index<end_time)
 		smart_meter_power=smart_meter_data[idx_smart]
-		x_smart_meter=[datetime.datetime.fromtimestamp(x) for x in smart_meter_data.index[idx_smart]]
+		x_smart_meter=[datetime.datetime.fromtimestamp(x-OFFSET) for x in smart_meter_data.index[idx_smart]]
 		y_smart_meter=smart_meter_power.values
 		
 		if len(y_smart_meter)==0:
@@ -68,7 +72,7 @@ class query:
 		idx_ct=(ct_required.index>start_time) & (ct_required.index<end_time)
 		
 		ct_current=ct_required[idx_ct]
-		x_ct=[datetime.datetime.fromtimestamp(x) for x in ct_current.index]
+		x_ct=[datetime.datetime.fromtimestamp(x-OFFSET) for x in ct_current.index]
 		y_ct=ct_current.values
 		
 		if len(y_ct)==0:
@@ -84,7 +88,7 @@ class query:
 		y_light=df[df["node"]==node_id].light.values
 		idx=y_light>0
 		y_light=y_light[idx]
-		x_light=[datetime.datetime.fromtimestamp(x) for x in df[df["node"]==node_id][idx].index]
+		x_light=[datetime.datetime.fromtimestamp(x-OFFSET) for x in df[df["node"]==node_id][idx].index]
 		
 		if len(y_light)==0:
 			no_data.append("light")
@@ -95,7 +99,7 @@ class query:
 		y_temp=df[df["node"]==node_id].temp.values
 		idx=y_temp>0
 		y_temp=y_temp[idx]
-		x_temp=[datetime.datetime.fromtimestamp(x) for x in df[df["node"]==node_id][idx].index]
+		x_temp=[datetime.datetime.fromtimestamp(x-OFFSET) for x in df[df["node"]==node_id][idx].index]
 		if len(y_temp)==0:
 			no_data.append("temp")
 		else:
@@ -106,7 +110,7 @@ class query:
 		df_pir=pir_data[idx_pir]
 		df_pir=df_pir[df_pir["node"]==node_id]
 		y_pir=[1]*len(df_pir.index.values)
-		x_pir=[datetime.datetime.fromtimestamp(x) for x in df_pir.index.values]
+		x_pir=[datetime.datetime.fromtimestamp(x-OFFSET) for x in df_pir.index.values]
 		if len(x_pir)==0:
 			no_data.append("pir")
 		
@@ -116,7 +120,7 @@ class query:
 		df=jplug_data[idx_jplug]
 		
 		y_jplug=df[df["jplug_id"]==jplug_id]["real"].values
-		x_jplug=[datetime.datetime.fromtimestamp(x) for x in df[df["jplug_id"]==jplug_id].index.values]
+		x_jplug=[datetime.datetime.fromtimestamp(x-OFFSET) for x in df[df["jplug_id"]==jplug_id].index.values]
 		if len(y_jplug)==0:
 			no_data.append("jplug")
 		else:
