@@ -31,8 +31,9 @@ This repository is divided as follows:
 * Configuration
    * Database schemas: Schemas for MySQL databases used in the deployment
    * Misc: Miscellaneous mappings between sensor id and locaiton in home
+   * Configuration settings: of different sensors. eg. sensitivity of HSM100
 * Dataset
-   * Annotated dataset: Contains *fully* labeled dataset from our deployment
+   * Annotated dataset: Contains *fully* labeled dataset from our deployment. This can be visualized [here](http://128.97.93.30:9004/).
    * Metadata: Contains pertinent metadata for different appliances in the home and different water fixtures
 * How To: Misc. how to guides which are not specific to the deployment, but used in our case
 * Software:
