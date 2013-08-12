@@ -6,6 +6,9 @@
 
 ---
 
+    You can view a prettier rendering of the same page [here](http://nipunreddevil.github.io/Home_Deployment/)
+
+
 ### Deployment Overview
 
 ![alt text](https://dl.dropboxusercontent.com/u/75845627/Deployment/overall_deployment.jpg "Deployment in Home I")
@@ -33,7 +36,7 @@ This repository is divided as follows:
    * Misc: Miscellaneous mappings between sensor id and locaiton in home
    * Configuration settings: of different sensors. eg. sensitivity of HSM100
 * Dataset
-   * Annotated dataset: Contains *fully* labeled dataset from our deployment. This can be visualized [here](http://128.97.93.30:9004/).
+   * Annotated dataset: Contains *fully* labeled dataset from our deployment. 
    * Metadata: Contains pertinent metadata for different appliances in the home and different water fixtures
 * How To: Misc. how to guides which are not specific to the deployment, but used in our case
 * Software:
@@ -52,7 +55,7 @@ One can also find the various issues and how we resolved them.
 
 ### Dataset
 
-1. The detailed metadata dataset can be found [here](https://github.com/nipunreddevil/Home_Deployment/wiki/Appliance-Metadata).
+1. The detailed metadata dataset can be found [here](https://github.com/nipunreddevil/Home_Deployment/wiki/Appliance-Metadata). This can be visualized [here](http://128.97.93.30:9004/).
 2. The UTC timestamped annotated dataset can be found [here](https://github.com/nipunreddevil/Home_Deployment/tree/master/dataset). The event sequence for the same and more information about the same can be found on the same page.
 
 The figure below shows the utlity of multi-modal time synchronized annotations, from one of the days during our deployment.
