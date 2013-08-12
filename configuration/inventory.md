@@ -5,7 +5,7 @@
 |Netgear router n300|1|
 |Netgear router n150(Jnr1010)|3|
 |Techtronix potable DSO|1|
-|Desktop Machine (Monitor| CPU|Keyboard|Mouse)|1|
+|Desktop Machine (Monitor, CPU, Keyboard, Mouse)|1|
 |Surge protected power strips|5|
 |Soldering iron 25W|1|
 |Lithium ion battery 3V3|20|
