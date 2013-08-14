@@ -1,3 +1,9 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 <head>
 
@@ -6,6 +12,20 @@
 <link rel="stylesheet" type="text/css" href="../static/stylesheets/jquery-ui-timepicker-addon.css">
 <link rel="stylesheet" type="text/css" href="../static/stylesheets/jquery.noty.css">
 <link rel="stylesheet" type="text/css" href="../static/stylesheets/noty_theme_twitter.css">
+<link rel="stylesheet" type="text/css" href="../static/stylesheets/skel-noscript.css" />
+<link rel="stylesheet" type="text/css" href="../static/stylesheets/style.css" />
+<link rel="stylesheet" type="text/css" href="../static/stylesheets/style-n1.css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600" rel="stylesheet" type="text/css" />
+<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+<script src="../static/javascripts/jquery.min.js"></script>
+<script src="../static/javascripts/jquery.dropotron.js"></script>
+<script src="../static/javascripts/skel.min.js"></script>
+<script src="../static/javascripts/skel-panels.min.js"></script>
+<script src="../static/javascripts/init.js"></script>
+		
 <script src="../static/javascripts/jquery-1.6.4.min.js" type="text/javascript"></script>
 <script src="../static/javascripts/jquery-ui-1.8.20.custom.min.js" type="text/javascript"></script>
 <script src="../static/javascripts/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
@@ -107,24 +127,40 @@
 </script>
 </head>
 
-<body>
-	<title>Dataset Visualization</title>
-
+<body class="left-sidebar">
 	
+	<!-- Header Wrapper -->
+			<div id="header-wrapper">
+						
+				<!-- Header -->
+					<div id="header" class="container">
+						
+						<!-- Logo -->
+							<h1>It's Different: Insights into home electricity consumption in India</h1>		
 
-	
-	<br/>
-	<hr/>
-	<label>CT id</label>
+					</div>
+
+			</div>
+			
+	<!-- Main Wrapper -->
+			<div class="wrapper">
+
+				<div class="container">
+					<div class="row" id="main">
+						<div class="4u">
+
+							<!-- Sidebar -->
+								<section id="sidebar">
+									<section>
+<label>CT id</label>
 	<select multiple id=ct_id>
   		<option value=1>1</option>
   		<option value=2>2</option>
  	 	<option value=3>3</option>
  		 
 	</select>
-	<label multiple id=view_ct>View CT</label>
 	<br/>
-	<label>Multisensor id</label>
+		<label>Multisensor id</label>
 	<select seize=1 multiple="multiple" id=node_id>
   		<option value=2>2</option>
   		<option value=3>3</option>
@@ -148,17 +184,75 @@
 		<option value="001EC00D7A1C">001EC00D7A1C</option>
 		<option value="001EC00E6BBD">001EC00E6BBD</option>
 		<option value="001EC00E6BB6">001EC00E6BB6</option>
-	</select>
-	<br/>	
-	Time duration <div id="slider-range" style="width:200px"></div>
+	</select>		
+						</section>
+									<section>
+										Time duration <div id="slider-range" style="width:200px"></div>
 	<button id="view_data">View</button>
 
 <span id="amount"></span>
-	<div id="ct_dialog" title="Circuit Mapping">
+									</section>
+								</section>
+					
+						</div>
+						<div class="8u skel-cell-mainContent">
+					
+							<!-- Content -->
+								<article id="content">
+									<div id="hello"></div>
+	 <img id="staticImage"></img>
+								</article>
+
+						</div>
+					</div>
+					<div class="row features">
+						<section class="4u feature">
+							<div class="image-wrapper first">
+								<a href="http://ineedchemicalx.deviantart.com/art/Time-goes-by-too-fast-335982438" class="image full"><img src="images/pic03.jpg" alt="" /></a>
+							</div>
+							<header>
+								<h3>Dolor sit consequat magna</h3>
+							</header>
+							<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur 
+							vel sem sit dolor neque semper magna lorem ipsum.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">Elevate my awareness</a></li>
+							</ul>
+						</section>
+						<section class="4u feature">
+							<div class="image-wrapper">
+								<a href="http://ineedchemicalx.deviantart.com/art/Kingdom-of-the-Wind-348268044" class="image full"><img src="images/pic04.jpg" alt="" /></a>
+							</div>
+							<header>
+								<h3>Dolor sit consequat magna</h3>
+							</header>
+							<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur 
+							vel sem sit dolor neque semper magna lorem ipsum.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">Elevate my awareness</a></li>
+							</ul>
+						</section>
+						<section class="4u feature">
+							<div class="image-wrapper">
+								<a href="http://ineedchemicalx.deviantart.com/art/Elysium-355393900" class="image full"><img src="images/pic05.jpg" alt="" /></a>
+							</div>
+							<header>
+								<h3>Dolor sit consequat magna</h3>
+							</header>
+							<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur 
+							vel sem sit dolor neque semper magna lorem ipsum.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">Elevate my awareness</a></li>
+							</ul>
+						</section>
+					</div>
+				</div>
+			</div>
+	
+	
 		
   <table><tr><td>1</td><td>Fan #3	Ground	Fan	Drawing</td></tr></table></div>
-	<div id="hello"></div>
-	 <img id="staticImage"></img>
+	
 	 
 	
 </body>

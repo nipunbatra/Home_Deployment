@@ -182,7 +182,7 @@ class query:
 			filename=randomword(12)+".jpg"
 			figure = plt.gcf()
 			figure.autofmt_xdate()
-			figure.set_size_inches(12,len(fig.axes)*2)	
+			figure.set_size_inches(6,len(fig.axes)*2)	
 			
 			plt.tight_layout()
 			plt.savefig("static/images/"+filename, bbox_inches=0,dpi=100)
