@@ -15,29 +15,58 @@
 
 
 <script type="text/javascript">
-			jQuery(document).ready(function() {
-
-				
+	
+			jQuery(document).ready(function() {	
+				var start_time,end_time;	
 				jQuery.ajaxSetup({
 					async : false
 				});
-			jQuery("#staticImage").hide();
+				jQuery("#staticImage").hide();
+				jQuery("#ct_dialog").hide();
+				
+				 function fun(d)
+					{
+					return String(d.getHours())+":"+String(d.getMinutes())+":"+String(d.getSeconds());
+					}
+    jQuery( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 10800,
+      step:60,
+      values: [ 0, 10800 ],
+      slide: function( event, ui ) {
+		  start_time=1375599000+ui.values[ 0 ];
+		  end_time=1375599000+ui.values[ 1]
+        jQuery( "#amount" ).text( fun(new Date(new Date(2013,7,4,12,20).getTime() + ui.values[ 0 ]*1000)) + "-"+ fun(new Date(new Date(2013,7,4,12,20).getTime() + ui.values[ 1 ]*1000)));
+      }
+    });
+    start_time=1375599000;
+    end_time= 1375609800;
+    jQuery( "#amount" ).text("12:20:00-15:20:00");
+ 
+				
+   
 			createDateTimePicker("#start_date_time");
 			createDateTimePicker("#end_date_time");
 			jQuery("#start_date_time").val("2013-08-04-12:20");
 			jQuery("#end_date_time").val("2013-08-04-15:12");
+			jQuery("#view_ct").click(function() {
+			jQuery(function() {
+				jQuery( "#ct_dialog" ).dialog();
+					});
+				});
 				jQuery("#view_data").click(function() {
 					
 					showNoty("Loading..","center",false);
 
-					var node_id,start_time,end_time;
+					var node_id;
 
 					
 					ct_id=jQuery("#ct_id").val();
 					node_id=jQuery("#node_id").val();
 					jplug_id=jQuery("#jplug_id").val();
-					start_time=datetimeToEpoch(jQuery("#start_date_time").val());
-					end_time=datetimeToEpoch(jQuery("#end_date_time").val());
+					//start_time=datetimeToEpoch(jQuery("#start_date_time").val());
+					//end_time=datetimeToEpoch(jQuery("#end_date_time").val());
 
 					var obj={};
 					obj["start_time"]=start_time;
@@ -45,10 +74,7 @@
 					obj["ct_id"]=ct_id;
 					obj["node_id"]=node_id;
 					obj["jplug_id"]=jplug_id;
-					
-					//alert(JSON.stringify(obj));
-					
-					
+									
 					var receivedData={};
 					var temp="http://"+document.location.hostname+":"+document.location.port+"/";
 					jQuery.post(temp+"query", JSON.stringify(obj), function(data) {
@@ -59,7 +85,6 @@
 
 						});
 					jQuery.noty.closeAll();
-					//alert(JSON.stringify(receivedData));
 					var filename=receivedData["filename"];
 					var no_data=receivedData["no_data"];
 					if (no_data.length>0)
@@ -69,8 +94,10 @@
 							
 							
 					}
+					
 					jQuery("#staticImage").attr("src","../static/images/"+filename);
 					jQuery("#staticImage").show();
+					
 
 				});
 
@@ -85,25 +112,20 @@
 
 	
 
-<label>Start Time</label> <input type="text" id="start_date_time" name="start_date_time" readonly='false' />
-
-<br/>
-<label>End Time  </label> <input type="text" id="end_date_time" name="start_date_time" readonly='false' />
-
 	
 	<br/>
 	<hr/>
 	<label>CT id</label>
-	<select id=ct_id>
+	<select multiple id=ct_id>
   		<option value=1>1</option>
   		<option value=2>2</option>
  	 	<option value=3>3</option>
  		 
 	</select>
-	
+	<label multiple id=view_ct>View CT</label>
 	<br/>
 	<label>Multisensor id</label>
-	<select id=node_id>
+	<select seize=1 multiple="multiple" id=node_id>
   		<option value=2>2</option>
   		<option value=3>3</option>
  	 	<option value=4>4</option>
@@ -114,7 +136,7 @@
 	</select>
 	<br/>
 	<label>jPlug id</label>
-	<select id=jplug_id>
+	<select multiple  id=jplug_id>
   		<option value="001EC00CC49C">001EC00CC49C</option>
   		<option value="001EC00CC49F">001EC00CC49F</option>
  	 	<option value="001EC00CC4A1">001EC00CC4A1</option>
@@ -127,12 +149,18 @@
 		<option value="001EC00E6BBD">001EC00E6BBD</option>
 		<option value="001EC00E6BB6">001EC00E6BB6</option>
 	</select>
-
+	<br/>	
+	Time duration <div id="slider-range" style="width:200px"></div>
 	<button id="view_data">View</button>
 
-
+<span id="amount"></span>
+	<div id="ct_dialog" title="Circuit Mapping">
+		
+  <table><tr><td>1</td><td>Fan #3	Ground	Fan	Drawing</td></tr></table></div>
 	<div id="hello"></div>
 	 <img id="staticImage"></img>
+	 
+	
 </body>
 
 </html>

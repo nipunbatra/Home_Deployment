@@ -46,6 +46,7 @@ class home:
 
 class query:	
 	def POST(self):
+		print web.data()
 		no_data=[]
 		plt.clf()
 		data = web.data()
@@ -54,135 +55,134 @@ class query:
 		start_time=query_data["start_time"]
 		end_time=query_data["end_time"]
 		
-		ct_id=int(query_data["ct_id"])
-		node_id=int(query_data["node_id"])
-		jplug_id=query_data["jplug_id"]
+		if query_data["ct_id"] is not None:
+			ct_ids=[int(x) for x in query_data["ct_id"]]
+		else:
+			ct_ids=[]
+		if query_data["node_id"] is not None:
+			node_ids=[int(x) for x in query_data["node_id"]]
+		else: node_ids=[]
+		if query_data["jplug_id"] is not None:
+			jplug_ids=query_data["jplug_id"]
+		else:
+			jplug_ids=[]
 		
 		idx_smart=(smart_meter_data.index>start_time) & (smart_meter_data.index<end_time)
 		smart_meter_power=smart_meter_data[idx_smart]
 		x_smart_meter=[datetime.datetime.fromtimestamp(x-OFFSET) for x in smart_meter_data.index[idx_smart]]
 		y_smart_meter=smart_meter_power.values
 		
-		if len(y_smart_meter)==0:
-			no_data.append("Smart meter")
-		else:
-			print len(y_smart_meter),"smart"
-		
-		ct_required=ct_data[ct_data.id==ct_id].current
-		idx_ct=(ct_required.index>start_time) & (ct_required.index<end_time)
-		
-		ct_current=ct_required[idx_ct]
-		x_ct=[datetime.datetime.fromtimestamp(x-OFFSET) for x in ct_current.index]
-		y_ct=ct_current.values
-		
-		if len(y_ct)==0:
-			no_data.append("ct")
-		else:
-			print len(y_ct),"CT"
+		count=0
+		with lock:
+			fig = plt.gcf() # get current figure
+			ax1=plt.subplot(1,1,1)
+			ax1.set_title('Electricity meter')
+			ax1.set_ylabel('Real power (W)')
+			ax1.plot(x_smart_meter,y_smart_meter)
+			count=1
 			
-		
+		for ct_id in ct_ids:
+			ct_required=ct_data[ct_data.id==ct_id].current
+			idx_ct=(ct_required.index>start_time) & (ct_required.index<end_time)
+			ct_current=ct_required[idx_ct]
+			x_ct=[datetime.datetime.fromtimestamp(x-OFFSET) for x in ct_current.index]
+			y_ct=ct_current.values
+			if len(y_ct)==0:
+				no_data.append("ct%d" %ct_id)
+			else:
+				with lock:
+					n = len(fig.axes) 
+					for i in range(n): 
+						fig.axes[i].change_geometry(n+1, 1, i+1) 
+					ax = fig.add_subplot(n+1, 1, n+1,sharex=ax1) 
+					ax.set_title('MCB # %d' %ct_id)
+					ax.set_ylabel('Current (A)')
+					ax.plot(x_ct,y_ct) 
+						
 		'''Light'''
-		idx_light_temp=(light_temp_data.index>start_time) & (light_temp_data.index<end_time)
-		df=light_temp_data[idx_light_temp]
+		for node_id in node_ids:
+			idx_light_temp=(light_temp_data.index>start_time) & (light_temp_data.index<end_time)
+			df=light_temp_data[idx_light_temp]
+			y_light=df[df["node"]==node_id].light.values
+			idx=y_light>0
+			y_light=y_light[idx]
+			x_light=[datetime.datetime.fromtimestamp(x-OFFSET) for x in df[df["node"]==node_id][idx].index]
 		
-		y_light=df[df["node"]==node_id].light.values
-		idx=y_light>0
-		y_light=y_light[idx]
-		x_light=[datetime.datetime.fromtimestamp(x-OFFSET) for x in df[df["node"]==node_id][idx].index]
-		
-		if len(y_light)==0:
-			no_data.append("light")
-		else:
-			print len(y_light),"Light"
+			if len(y_light)==0:
+				no_data.append("light%d" %node_id)
+			else:
+				with lock:
+					n = len(fig.axes) 
+					for i in range(n): 
+						fig.axes[i].change_geometry(n+1, 1, i+1) 
+					ax = fig.add_subplot(n+1, 1, n+1,sharex=ax1) 
+					ax.plot(x_light,y_light) 
+					ax.set_ylabel('Light')
+					ax.set_title('Light node #%d' %node_id)
 		
 		'''Temp'''
-		y_temp=df[df["node"]==node_id].temp.values
-		idx=y_temp>0
-		y_temp=y_temp[idx]
-		x_temp=[datetime.datetime.fromtimestamp(x-OFFSET) for x in df[df["node"]==node_id][idx].index]
-		if len(y_temp)==0:
-			no_data.append("temp")
-		else:
-			print len(y_temp),"Temp"
+		for node_id in node_ids:
+			y_temp=df[df["node"]==node_id].temp.values
+			idx=y_temp>0
+			y_temp=y_temp[idx]
+			x_temp=[datetime.datetime.fromtimestamp(x-OFFSET) for x in df[df["node"]==node_id][idx].index]
+			if len(y_temp)==0:
+				no_data.append("temp%d" %node_id)
+			else:
+				with lock:
+					n = len(fig.axes) 
+					for i in range(n): 
+						fig.axes[i].change_geometry(n+1, 1, i+1) 
+					ax = fig.add_subplot(n+1, 1, n+1,sharex=ax1) 
+					ax.plot(x_temp,y_temp) 
+					ax.set_ylabel('Temperature (F)')
+					ax.set_title('Temperature node #%d' %node_id)
+				
 			
 		'''Presence'''
-		idx_pir=(pir_data.index>start_time) & (pir_data.index<end_time)
-		df_pir=pir_data[idx_pir]
-		df_pir=df_pir[df_pir["node"]==node_id]
-		y_pir=[1]*len(df_pir.index.values)
-		x_pir=[datetime.datetime.fromtimestamp(x-OFFSET) for x in df_pir.index.values]
-		if len(x_pir)==0:
-			no_data.append("pir")
-		
+		for node_id in node_ids:
+			idx_pir=(pir_data.index>start_time) & (pir_data.index<end_time)
+			df_pir=pir_data[idx_pir]
+			df_pir=df_pir[df_pir["node"]==node_id]
+			y_pir=[1]*len(df_pir.index.values)
+			x_pir=[datetime.datetime.fromtimestamp(x-OFFSET) for x in df_pir.index.values]
+			if len(x_pir)==0:
+				no_data.append("pir%d" %node_id)
+			else:
+				with lock:
+					n = len(fig.axes) 
+					for i in range(n): 
+						fig.axes[i].change_geometry(n+1, 1, i+1) 
+					ax = fig.add_subplot(n+1, 1, n+1,sharex=ax1) 
+					ax.plot(x_pir,y_pir,'o')
+					ax.set_ylabel('Presence')
+					ax.set_title('PIR node #%d' %node_id) 
+				
 		
 		'''jplug'''
-		idx_jplug=(jplug_data.index>start_time) & (jplug_data.index<end_time)
-		df=jplug_data[idx_jplug]
-		
-		y_jplug=df[df["jplug_id"]==jplug_id]["real"].values
-		x_jplug=[datetime.datetime.fromtimestamp(x-OFFSET) for x in df[df["jplug_id"]==jplug_id].index.values]
-		if len(y_jplug)==0:
-			no_data.append("jplug")
-		else:
-			print len(y_jplug),"Jplug"
+		for jplug_id in jplug_ids:
+			idx_jplug=(jplug_data.index>start_time) & (jplug_data.index<end_time)
+			df=jplug_data[idx_jplug]
+			y_jplug=df[df["jplug_id"]==jplug_id]["real"].values
+			x_jplug=[datetime.datetime.fromtimestamp(x-OFFSET) for x in df[df["jplug_id"]==jplug_id].index.values]
+			if len(y_jplug)==0:
+				no_data.append("jplug %s" %jplug_id)
+			else:
+				with lock:
+					n = len(fig.axes) 
+					for i in range(n): 
+						fig.axes[i].change_geometry(n+1, 1, i+1) 
+					ax = fig.add_subplot(n+1, 1, n+1,sharex=ax1) 
+					ax.plot(x_jplug,y_jplug)
+					ax.set_title('jPlug Power consumption for %s' %jplug_id)
+					ax.set_ylabel('Power (W)')
 		
 		
 		with lock:
-			figure = plt.gcf() # get current figure
-			num_subplots=6-len(no_data)
-			ax1=plt.subplot(num_subplots,1,1)
-			#ax1.xaxis.set_major_formatter(matplotlib.dates.DateFormatter("%H:%M"))
-			ax1.set_title('Electricity meter')
-			ax1.set_ylabel('Real power (W)')
-			if "Smart meter" not in no_data:
-				ax1.plot(x_smart_meter,y_smart_meter)
-				#plt.gca().xaxis.set_major_formatter(matplotlib.dates.DateFormatter("%H:%M"))
-			
-			count=1
-			if "ct" not in no_data:
-				count=count+1
-				ax2=plt.subplot(num_subplots,1,count,sharex=ax1)
-				ax2.set_title("Current for MCB#"+str(ct_id))
-				ax2.set_ylabel("Current (A)")
-				ax2.plot(x_ct,y_ct)
-				#plt.gca().xaxis.set_major_formatter(matplotlib.dates.DateFormatter("%H:%M"))
-			
-			if "light" not in no_data:
-				count=count+1
-				ax3=plt.subplot(num_subplots,1,count,sharex=ax1)
-				ax3.set_title("Light for multisensor# "+str(node_id))
-				ax3.set_ylabel("Light intensity %")
-				ax3.plot(x_light,y_light)
-			if "pir" not in no_data:
-				count=count+1
-				ax6=plt.subplot(num_subplots,1,count,sharex=ax1)
-				ax6.set_title("PIR for multisensor# "+str(node_id))
-				ax6.set_ylabel("Motion events")
-				ax6.plot(x_pir,y_pir,'o')
-			
-			if "temp" not in no_data:
-				count=count+1
-				ax4=plt.subplot(num_subplots,1,count,sharex=ax1)
-				ax4.set_title("Temperature for multisensor# "+str(node_id))
-				ax4.set_ylabel("Temp (F)")
-				ax4.set_ylim((85,100))
-				ax4.plot(x_temp,y_temp)
-			
-			#ax5.set_ylim((85,100))
-			if "jplug" not in no_data:
-				count=count+1
-				ax5=plt.subplot(num_subplots,1,count,sharex=ax1)
-				ax5.set_title("Real Power for jplug# "+str(jplug_id))
-				ax5.set_ylabel("Real Power (W)")
-				ax5.plot(x_jplug,y_jplug)
-				
-			print no_data
-			print "*"*80
-			plt.show()
 			filename=randomword(12)+".jpg"
 			figure = plt.gcf()
 			figure.autofmt_xdate()
-			figure.set_size_inches(12,num_subplots*2)	
+			figure.set_size_inches(12,len(fig.axes)*2)	
 			
 			plt.tight_layout()
 			plt.savefig("static/images/"+filename, bbox_inches=0,dpi=100)
