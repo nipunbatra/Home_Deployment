@@ -136,7 +136,7 @@
 					<div id="header" class="container">
 						
 						<!-- Logo -->
-							<h1>It's Different: Insights into home electricity consumption in India</h1>		
+							<h1 id="logo"><a href="#">It's Different: Insights into home electricity consumption in India</a></h1>		
 
 					</div>
 
@@ -152,16 +152,18 @@
 							<!-- Sidebar -->
 								<section id="sidebar">
 									<section>
-<label>CT id</label>
-	<select multiple id=ct_id>
+								
+<label>Select any number of MCB(s).</label><a href="https://raw.github.com/nipunreddevil/Home_Deployment/master/configuration/ct.md~">More info</a>
+	<select multiple="multiple" style="height: 70px;" id=ct_id>
   		<option value=1>1</option>
   		<option value=2>2</option>
  	 	<option value=3>3</option>
  		 
 	</select>
 	<br/>
-		<label>Multisensor id</label>
-	<select seize=1 multiple="multiple" id=node_id>
+	<br/>
+		<label>Select any number of Multisensor(s). </label> <a href="https://github.com/nipunreddevil/Home_Deployment/blob/master/configuration/multisensor.md">More info</a>
+	<select size=1 multiple="multiple" style="height: 70px;" id=node_id>
   		<option value=2>2</option>
   		<option value=3>3</option>
  	 	<option value=4>4</option>
@@ -171,8 +173,9 @@
  		 
 	</select>
 	<br/>
-	<label>jPlug id</label>
-	<select multiple  id=jplug_id>
+	<br/>
+	<label>Select jPlug ID.</label> <a href="https://github.com/nipunreddevil/Home_Deployment/blob/master/configuration/jplug_appliance.md" >More info</a>
+	<select multiple="multiple" style="height: 70px;"  id=jplug_id>
   		<option value="001EC00CC49C">001EC00CC49C</option>
   		<option value="001EC00CC49F">001EC00CC49F</option>
  	 	<option value="001EC00CC4A1">001EC00CC4A1</option>
@@ -188,7 +191,9 @@
 						</section>
 									<section>
 										Time duration <div id="slider-range" style="width:200px"></div>
-	<button id="view_data">View</button>
+										<br/>
+										
+	<button id="view_data" class="button">View</button>
 
 <span id="amount"></span>
 									</section>
@@ -208,7 +213,7 @@
 					<div class="row features">
 						<section class="4u feature">
 							<div class="image-wrapper first">
-								<a href="http://ineedchemicalx.deviantart.com/art/Time-goes-by-too-fast-335982438" class="image full"><img src="images/pic03.jpg" alt="" /></a>
+								<a href="http://ineedchemicalx.deviantart.com/art/Time-goes-by-too-fast-335982438" class="image full"><img src="../static/images/pic03.jpg" alt="" /></a>
 							</div>
 							<header>
 								<h3>Dolor sit consequat magna</h3>
@@ -221,7 +226,7 @@
 						</section>
 						<section class="4u feature">
 							<div class="image-wrapper">
-								<a href="http://ineedchemicalx.deviantart.com/art/Kingdom-of-the-Wind-348268044" class="image full"><img src="images/pic04.jpg" alt="" /></a>
+								<a href="http://ineedchemicalx.deviantart.com/art/Kingdom-of-the-Wind-348268044" class="image full"><img src="../static/images/pic01.jpg" alt="" /></a>
 							</div>
 							<header>
 								<h3>Dolor sit consequat magna</h3>
@@ -234,7 +239,7 @@
 						</section>
 						<section class="4u feature">
 							<div class="image-wrapper">
-								<a href="http://ineedchemicalx.deviantart.com/art/Elysium-355393900" class="image full"><img src="images/pic05.jpg" alt="" /></a>
+								<a href="#" class="image full"><img src="../static/images/pic02.jpg" alt="" /></a>
 							</div>
 							<header>
 								<h3>Dolor sit consequat magna</h3>
@@ -251,10 +256,7 @@
 	
 	
 		
-  <table><tr><td>1</td><td>Fan #3	Ground	Fan	Drawing</td></tr></table></div>
-	
-	 
-	
+ 
 </body>
 
 </html>
