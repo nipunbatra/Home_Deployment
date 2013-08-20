@@ -56,8 +56,9 @@ One can also find the various issues and how we resolved them.
 
 ### Dataset
 
-1. The detailed metadata dataset can be found [here](https://github.com/nipunreddevil/Home_Deployment/wiki/Appliance-Metadata). This can be visualized [here](http://128.97.93.30:9004/).
+1. The detailed metadata dataset can be found [here](https://github.com/nipunreddevil/Home_Deployment/wiki/Appliance-Metadata).
 2. The UTC timestamped annotated dataset can be found [here](https://github.com/nipunreddevil/Home_Deployment/tree/master/dataset). The event sequence for the same and more information about the same can be found on the same page.
+This can be visualized [here](http://128.97.93.30:9004/).
 
 The figure below shows the utlity of multi-modal time synchronized annotations, from one of the days during our deployment.
 ![alt text](https://dl.dropboxusercontent.com/u/75845627/Deployment/label_annotated.png "Multi-modal annotated data")
