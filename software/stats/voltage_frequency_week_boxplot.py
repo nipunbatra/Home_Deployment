@@ -15,7 +15,9 @@ import matplotlib.pyplot as plt
 import matplotlib
 start_date=datetime.datetime(2013,5,29,0,0,0,tzinfo=pytz.timezone('Asia/Kolkata'))
 matplotlib.rcParams.update({'font.size': 32})
-
+import json
+s = json.load( open("bmh_matplotlibrc.json") )
+matplotlib.rcParams.update(s)
 num_days=2
 stats={}
 stats['X']=[]
@@ -47,7 +49,7 @@ for i in range(len(V)):
 
 	
 plt.boxplot(VO)
-plt.title('Voltage Boxplot')
+plt.title('Voltage Boxplot (India)')
 plt.ylabel('Voltage (V)')
 plt.xticks([1],[''])
 plt.grid()
@@ -56,7 +58,7 @@ fig.set_size_inches(7,9)
 plt.savefig('voltage_box.png',dpi=100,bbox_inches='tight')
 plt.clf()
 plt.boxplot(FR)
-plt.title('Frequency Boxplot')
+plt.title('Frequency Boxplot (India)')
 plt.ylabel('Frequency (Hz)')
 plt.xticks([1],[''])
 plt.grid()

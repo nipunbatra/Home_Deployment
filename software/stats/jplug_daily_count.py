@@ -1,4 +1,4 @@
-'''This script finds the total number of entries in a day for each jplug
+d'''This script finds the total number of entries in a day for each jplug
 and optionallty can also plot and save the same'''
 
 

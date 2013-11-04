@@ -15,6 +15,10 @@ import matplotlib.pyplot as plt
 import matplotlib
 start_date=datetime.datetime(2013,5,25,0,0,0,tzinfo=pytz.timezone('Asia/Kolkata'))
 matplotlib.rcParams.update({'font.size': 32})
+import json
+s = json.load( open("bmh_matplotlibrc.json") )
+matplotlib.rcParams.update(s)
+
 
 num_days=61
 stats={}
