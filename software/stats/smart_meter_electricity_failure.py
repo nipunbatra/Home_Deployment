@@ -14,10 +14,14 @@ import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import matplotlib
 start_date=datetime.datetime(2013,5,25,0,0,0,tzinfo=pytz.timezone('Asia/Kolkata'))
-matplotlib.rcParams.update({'font.size': 32})
 import json
-s = json.load( open("bmh_matplotlibrc.json") )
-matplotlib.rcParams.update(s)
+#s = json.load( open("bmh_matplotlibrc.json") )
+#matplotlib.rcParams.update(s)
+from mpltools import style
+from mpltools import layout
+
+style.use('ggplot')
+matplotlib.rcParams.update({'font.size': 32})
 
 
 num_days=61
@@ -54,4 +58,4 @@ plt.ylabel('Hours')
 
 fig=plt.gcf()
 fig.set_size_inches(16,9)	
-plt.savefig('electricity.png',dpi=100,bbox_inches='tight')
+plt.savefig('electricity_ggplot.png',dpi=100,bbox_inches='tight')
