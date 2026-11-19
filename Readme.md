@@ -56,6 +56,8 @@ One can also find the various issues and how we resolved them.
 
 ### Dataset
 
+**Official archive (v1.0.0):** [Download iAWE on Zenodo](https://doi.org/10.5281/zenodo.24361973), including the original electricity CSV archive and legacy HDF5, water and ambient streams, motion data, selected annotations, and documentation with checksums. The archive is released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Please cite both the [versioned dataset](https://doi.org/10.5281/zenodo.24361973) and the [original BuildSys 2013 paper](https://doi.org/10.1145/2528282.2528293). See the bundled quickstart and data dictionary for stream differences and limitations.
+
 1. The detailed metadata dataset can be found [here](https://github.com/nipunreddevil/Home_Deployment/wiki/Appliance-Metadata).
 2. The UTC timestamped annotated dataset can be found [here](https://github.com/nipunreddevil/Home_Deployment/tree/master/dataset). The event sequence for the same and more information about the same can be found on the same page.
 This can be visualized [here](http://128.97.93.30:9004/).
